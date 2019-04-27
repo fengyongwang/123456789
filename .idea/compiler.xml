@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="api-boot" />
+        <module name="api-common" />
+        <module name="interface-common" />
+        <module name="user-dao" />
+        <module name="user-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api-base" target="1.5" />
+      <module name="api-boot" target="1.8" />
+      <module name="api-build" target="1.5" />
+      <module name="api-common" target="1.8" />
+      <module name="api-common-base" target="1.5" />
+      <module name="api-common-build" target="1.5" />
+      <module name="cloud-base" target="1.5" />
+      <module name="interface-base" target="1.5" />
+      <module name="interface-build" target="1.5" />
+      <module name="interface-common" target="1.8" />
+      <module name="user-base" target="1.5" />
+      <module name="user-build" target="1.5" />
+      <module name="user-dao" target="1.8" />
+      <module name="user-service" target="1.8" />
+      <module name="wagu-common" target="1.8" />
+      <module name="wginterface-common" target="1.8" />
+      <module name="zdapi-boot" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

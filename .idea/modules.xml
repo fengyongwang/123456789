@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api/api-base/api-base.iml" filepath="$PROJECT_DIR$/api/api-base/api-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/api-boot/api-boot.iml" filepath="$PROJECT_DIR$/api/api-boot/api-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/api-build/api-build.iml" filepath="$PROJECT_DIR$/api/api-build/api-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/api-common/api-common.iml" filepath="$PROJECT_DIR$/common/api-common/api-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/api-common-base/api-common-base.iml" filepath="$PROJECT_DIR$/common/api-common-base/api-common-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/api-common-build/api-common-build.iml" filepath="$PROJECT_DIR$/common/api-common-build/api-common-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-base/cloud-base.iml" filepath="$PROJECT_DIR$/cloud-base/cloud-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/interface/interface-base/interface-base.iml" filepath="$PROJECT_DIR$/interface/interface-base/interface-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/interface/interface-build/interface-build.iml" filepath="$PROJECT_DIR$/interface/interface-build/interface-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/interface/interface-common/interface-common.iml" filepath="$PROJECT_DIR$/interface/interface-common/interface-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/test.iml" filepath="$PROJECT_DIR$/.idea/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-base/user-base.iml" filepath="$PROJECT_DIR$/user/user-base/user-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-build/user-build.iml" filepath="$PROJECT_DIR$/user/user-build/user-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-dao/user-dao.iml" filepath="$PROJECT_DIR$/user/user-dao/user-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-service/user-service.iml" filepath="$PROJECT_DIR$/user/user-service/user-service.iml" />
+    </modules>
+  </component>
+</project>

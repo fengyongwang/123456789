@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/cloud-base/pom.xml" />
+        <option value="$PROJECT_DIR$/interface/interface-base/pom.xml" />
+        <option value="$PROJECT_DIR$/interface/interface-build/pom.xml" />
+        <option value="$PROJECT_DIR$/interface/interface-common/pom.xml" />
+        <option value="$PROJECT_DIR$/common/api-common-build/pom.xml" />
+        <option value="$PROJECT_DIR$/common/api-common-base/pom.xml" />
+        <option value="$PROJECT_DIR$/common/api-common/pom.xml" />
+        <option value="$PROJECT_DIR$/user/user-base/pom.xml" />
+        <option value="$PROJECT_DIR$/user/user-build/pom.xml" />
+        <option value="$PROJECT_DIR$/user/user-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/user/user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/api/api-base/pom.xml" />
+        <option value="$PROJECT_DIR$/api/api-boot/pom.xml" />
+        <option value="$PROJECT_DIR$/api/api-build/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>
