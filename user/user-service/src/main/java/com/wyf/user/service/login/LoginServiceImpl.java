@@ -7,9 +7,11 @@ import com.wyf.user.bo.result.LoginBOResult;
 import com.wyf.user.constant.UserEnum;
 import com.wyf.user.dao.UserDao;
 import com.wyf.user.manager.login.LoginManager;
+import com.wyf.user.po.data.User;
 import com.wyf.user.po.request.UserRequest;
 import com.wyf.user.po.result.UserResult;
 import com.wyf.user.util.ResultUserServiceCodeUtil;
+import com.wyf.user.util.TokenUtil;
 import lombok.extern.log4j.Log4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -53,7 +55,7 @@ public class LoginServiceImpl implements LoginService {
     public LoginBOResult Login(LoginBoRequest request) {
         LoginBOResult loginBOResult = new LoginBOResult();
 
-        if (request.getIdentity() == UserEnum.CUSTOMER.getValue()) {
+        if (request.getIdentity() == UserEnum.CUSTOMER.getValue()||request.getIdentity() == UserEnum.MERCHANT.getValue()) {
             /**
              *顾客登录
              */
@@ -65,20 +67,6 @@ public class LoginServiceImpl implements LoginService {
                 return loginBOResult;
             }
 
-
-        }
-        if (request.getIdentity() == UserEnum.MERCHANT.getValue()) {
-            /**
-             * 商家登录
-             */
-            CommonBOResult result = loginManager.verifySmsCode(request);
-
-            if (result.isFailed()) {
-                log.warn("merchant login smsCode is error...");
-                loginBOResult.setMessage("merchant login smsCode is error...");
-                return loginBOResult;
-            }
-
             UserRequest userRequest = convertManager.tran(request,UserRequest.class);
             UserResult userResult= userDao.simpleQueryByRequest(userRequest);
             if(!userResult.isSuccess()){
@@ -86,23 +74,12 @@ public class LoginServiceImpl implements LoginService {
                 return loginBOResult;
             }
 
-            /**
-             * 商家需要系统后台人员添加
-             */
-            if(userResult.getValues().size()==0){
-                log.warn("sorry,you are not our member");
-                loginBOResult.setMessage("sorry,you are not our member");
-                return loginBOResult;
+                   String token= TokenUtil.createToken(userResult);
+            if(token!=null) {
+                loginBOResult.setToken(token);
+                ResultUserServiceCodeUtil.resultSuccess(loginBOResult);
             }
-/**
- * 生token
- */
-
-
-
-
-
-        } else if (request.getIdentity() == UserEnum.SYSTEMSERVICE.getValue()) {
+        }else if (request.getIdentity() == UserEnum.SYSTEMSERVICE.getValue()) {
 
             /**
              * 系统后台服务者   账号密码登录

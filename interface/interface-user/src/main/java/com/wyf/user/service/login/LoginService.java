@@ -2,6 +2,7 @@ package com.wyf.user.service.login;
 
 import com.wyf.bo.CommonBOResult;
 import com.wyf.user.bo.request.LoginBoRequest;
+import com.wyf.user.bo.result.LoginBOResult;
 
 /**
  * Description:
@@ -23,7 +24,7 @@ public interface LoginService {
      * @param request
      * @return
      */
-    CommonBOResult Login(LoginBoRequest request);
+    LoginBOResult Login(LoginBoRequest request);
 
 
 

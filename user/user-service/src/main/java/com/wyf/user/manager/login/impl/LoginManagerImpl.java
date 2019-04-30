@@ -10,6 +10,7 @@ import com.wyf.user.manager.login.LoginManager;
 import com.wyf.user.po.request.UserRequest;
 import com.wyf.user.po.result.UserResult;
 import com.wyf.user.util.ResultUserServiceCodeUtil;
+import com.wyf.user.util.TokenUtil;
 import com.wyf.util.ResultConstant;
 import com.wyf.util.UserUtil;
 import lombok.extern.log4j.Log4j;
@@ -131,24 +132,14 @@ public class LoginManagerImpl implements LoginManager {
         UserResult userResult=userDao.simpleQueryByRequest(userRequest);
 
         if(!userResult.isSuccess()||userResult.getValues().size()>0){
-            /**
-             * id
-             */
-            userResult.getValue().getId();
-            /**
-             * identity
-             */
-            userResult.getValue().getIdentity();
-
-
-            /**
-             *  TODO 根据id和identity生成token
-             */
+            String token=TokenUtil.createToken(userResult);
+            if(token!=null){
+                loginBOResult.setToken(token);
+                ResultUserServiceCodeUtil.resultSuccess(loginBOResult);
+            }
 
         }
-
-
-        return null;
+        return loginBOResult;
     }
 
     /**
