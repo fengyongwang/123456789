@@ -49,18 +49,13 @@
             <version>${spring.boot.dependencies}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.wagu.cloud</groupId>
-            <artifactId>wagu-common</artifactId>
-            <version>${common.version}</version>
-        </dependency>
+
 
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-
 
 
         <dependency>
@@ -105,13 +100,39 @@
         </dependency>
 
 
+        <!--swagger 相关-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.api.cloud</groupId>
+            <artifactId>api-common</artifactId>
+            <version>${common.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>interface-user</artifactId>
+            <version>${interface.user.version}</version>
+        </dependency>
+
 
     </dependencies>
 
     <properties>
         <common.version>1.0-SNAPSHOT</common.version>
         <ali.oss.version>2.8.3</ali.oss.version>
-
+        <interface.user.version>1.0-SNAPSHOT</interface.user.version>
 
     </properties>
 

@@ -34,9 +34,9 @@ public class User {
      */
     private String phone;
     /**
-     * 类型   客户为1，商家为0
+     * 身份   客户为1，商家为0
      */
-    private Integer type;
+    private Integer identity;
     /**
      * 用户名  系统的后台服务用户名
      */
