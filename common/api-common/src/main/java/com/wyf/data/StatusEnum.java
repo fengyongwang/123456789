@@ -1,27 +1,21 @@
-package com.wyf.user.constant;
+package com.wyf.data;
 
-/**
- * Description:
- *
- * @author wangyf
- * @date 2019/4/29
- */
-public enum UserEnum {
+public enum StatusEnum {
 
     /**
-     * 客户
+     * 有效
      */
-    CUSTOMER(100, "客户"),
+    EFFECTIVE(1, "有效"),
     /**
-     * 商家
+     * 无效
      */
-    MERCHANT(200,"商家");
+    INVALID(0,"无效");
 
 
     private final int value;
     private final String name;
 
-    UserEnum(int value, String name) {
+    StatusEnum(int value, String name) {
         this.value = value;
         this.name = name;
     }
@@ -34,13 +28,13 @@ public enum UserEnum {
         return this.value;
     }
 
-    public static UserEnum valueOf(final int value){
+    public static StatusEnum valueOf(final int value){
         switch (value){
 
             case 1:
-                return CUSTOMER;
-            case 2:
-                return MERCHANT;
+                return EFFECTIVE;
+            case 0:
+                return INVALID;
             default:
                 return null;
         }

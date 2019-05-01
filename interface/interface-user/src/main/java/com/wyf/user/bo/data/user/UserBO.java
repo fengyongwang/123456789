@@ -1,28 +1,24 @@
-package com.wyf.user.po.data;
+package com.wyf.user.bo.data.user;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.Date;
-
 
 /**
  * Description:
  *
  * @author wangyf
- * @date 2019/4/27
+ * @date 2019/5/1
  */
 @Data
-@ToString
-@TableName(value = "t_yf_user")
-public class User {
+public class UserBO implements Serializable {
+    private static final long serialVersionUID = -7533170097142704887L;
+
     /**
-     *主键id
+     * 主键id
      */
-    @TableId(type = IdType.AUTO)
     private Integer id;
     /**
      * 手机号
@@ -39,7 +35,7 @@ public class User {
     private String passWord;
 
     /**
-     * 类型 客户or商家
+     * 类型 客户100or商家200
      */
     private Integer type;
 
@@ -55,13 +51,6 @@ public class User {
      * 创建时间
      */
     private Date createTime;
-    /**
-     * 修改者
-     */
-    private String modifyBy;
-    /**
-     * 创建者
-     */
-    private String createBy;
+
 
 }

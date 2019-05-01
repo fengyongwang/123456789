@@ -22,9 +22,9 @@ public class TokenUtil {
     public static String createToken(UserResult userResult){
         Map<String,String> hashMap=new HashMap<>();
         String token=null;
-        if(userResult.getValue().getIdentity()!=null||userResult.getValue().getId()!=null) {
+        if(userResult.getValue().getPhone()!=null||userResult.getValue().getId()!=null) {
             hashMap.put(JwtTokenConstant.TOKEN_ID_KEY, String.valueOf(userResult.getValue().getId()));
-            hashMap.put(JwtTokenConstant.TOKEN_IDENTITY_KEY, String.valueOf(userResult.getValue().getIdentity()));
+            hashMap.put(JwtTokenConstant.TOKEN_IDENTITY_KEY, String.valueOf(userResult.getValue().getPhone()));
 
             token = JwtToken.getToken(hashMap);
         }

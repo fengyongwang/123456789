@@ -36,14 +36,11 @@ public class UserDaoImpl implements UserDao {
             if (request.getId() != null) {
                 wp.eq(User::getId, request.getId());
             }
-            if (request.getName() != null) {
-                wp.eq(User::getName, request.getName());
-            }
             if (request.getPhone() != null) {
                 wp.eq(User::getPhone, request.getPhone());
             }
-            if (request.getIdentity() != null) {
-                wp.eq(User::getIdentity, request.getIdentity());
+            if (request.getType() != null) {
+                wp.eq(User::getType, request.getType());
             }
             if (request.getUserName()!=null) {
                 wp.eq(User::getUserName, request.getUserName());

@@ -1,23 +1,17 @@
-package com.wyf.user.po.request;
+package com.wyf.user.bo.request.user;
 
-import com.wyf.data.po.request.CommonRequestPO;
+import com.wyf.bo.CommonBORequest;
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * Description:
  *
  * @author wangyf
- * @date 2019/4/29
+ * @date 2019/5/1
  */
 @Data
-public class UserRequest extends CommonRequestPO {
+public class UserBORequest extends CommonBORequest {
 
-    /**
-     * 主键id
-     */
-    private Integer id;
     /**
      * 手机号
      */
@@ -33,8 +27,14 @@ public class UserRequest extends CommonRequestPO {
     private String passWord;
 
     /**
-     * 类型 客户or商家
+     * 类型 客户100or商家200
      */
     private Integer type;
+
+    /**
+     * 验证码
+     */
+    private String code;
+
 
 }
