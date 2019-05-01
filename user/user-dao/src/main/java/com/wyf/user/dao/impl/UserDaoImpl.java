@@ -48,7 +48,9 @@ public class UserDaoImpl implements UserDao {
             if (request.getUserName()!=null) {
                 wp.eq(User::getUserName, request.getUserName());
             }
-
+            if(request.getPassWord()!=null){
+                wp.eq(User::getPassWord, request.getPassWord());
+            }
             if (request.isPaging()) {
                 Page<User> page = new Page<>(request.getPage() + 1, request.getPageSize());
                 IPage<User> zdAddressIPage = mapper.selectPage(page, wp);
