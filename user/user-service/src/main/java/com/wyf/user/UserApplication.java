@@ -29,7 +29,7 @@ public class UserApplication {
             app.run(args);
             System.out.println("success");
         } catch (IOException e) {
-            System.out.println("Fail to start ZdApiApplication due to exception:" + e.toString());
+            System.out.println("Fail to start UserApplication due to exception:" + e.toString());
         }
     }
 
