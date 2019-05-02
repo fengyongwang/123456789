@@ -36,6 +36,8 @@
 	<modules>
 		<module>../interface-base</module>
 		<module>../interface-common</module>
+		<module>../interface-shop</module>
+		<module>../interface-user</module>
 	</modules>
 
 </project>

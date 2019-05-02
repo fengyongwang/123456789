@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
         }
 
         if(userResult.getValues().size()==0){
-            log.warn("simpleQueryByRequest at UserService error... ");
+            log.warn("user not exist ");
             ResultUserServiceCodeUtil.resultError(userBOResult);
             return userBOResult;
         }

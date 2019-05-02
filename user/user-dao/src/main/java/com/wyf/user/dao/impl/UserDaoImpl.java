@@ -8,7 +8,7 @@ import com.wyf.user.mapper.UserMapper;
 import com.wyf.user.po.data.User;
 import com.wyf.user.po.request.UserRequest;
 import com.wyf.user.po.result.UserResult;
-import com.wyf.user.util.ResultUtil;
+import com.wyf.user.util.ResultUserUtil;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Component;
 
@@ -51,13 +51,13 @@ public class UserDaoImpl implements UserDao {
             if (request.isPaging()) {
                 Page<User> page = new Page<>(request.getPage() + 1, request.getPageSize());
                 IPage<User> zdAddressIPage = mapper.selectPage(page, wp);
-                ResultUtil.resultValues(res, zdAddressIPage.getRecords());
-                ResultUtil.resultCountWithPaging(res, (int) zdAddressIPage.getTotal(), request.getPage());
+                ResultUserUtil.resultValues(res, zdAddressIPage.getRecords());
+                ResultUserUtil.resultCountWithPaging(res, (int) zdAddressIPage.getTotal(), request.getPage());
             } else {
                 List<User> list = mapper.selectList(wp);
-                ResultUtil.resultValues(res, list);
+                ResultUserUtil.resultValues(res, list);
             }
-            ResultUtil.resultSuccess(res);
+            ResultUserUtil.resultSuccess(res);
         } catch (Exception e) {
             log.error("UserDao simpleQueryByRequest error..........", e);
         }
@@ -70,7 +70,7 @@ public class UserDaoImpl implements UserDao {
         UserResult res = new UserResult();
         try {
             int status = mapper.insert(user);
-            ResultUtil.dealUpsert(status, user, res);
+            ResultUserUtil.dealUpsert(status, user, res);
         } catch (Exception e) {
             log.error("User dao insert error..........", e);
         }
