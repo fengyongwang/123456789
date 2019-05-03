@@ -1,7 +1,6 @@
-package com.wyf.user.util;
+package com.wyf.shop.util;
 
 import com.wyf.bo.CommonBOResult;
-import com.wyf.data.vo.result.CommonResultVO;
 import com.wyf.util.ResultConstant;
 
 /**
@@ -10,7 +9,7 @@ import com.wyf.util.ResultConstant;
  * @author wangyf
  * @date 2019/4/29
  */
-public class ResultUserServiceCodeUtil {
+public class ResultShopServiceCodeUtil {
 
     /**
      * 返回结果success
@@ -21,7 +20,6 @@ public class ResultUserServiceCodeUtil {
         result.setStatus(ResultConstant.CODE.SUCCESS);
 
     }
-
 
 
 

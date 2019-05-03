@@ -74,12 +74,37 @@ PRIMARY KEY (`id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='商铺会员关联表';
 
 
+
+
+
+create table IF NOT EXISTS t_yf_total_commodity(
+`id` INT(11) NOT NULL AUTO_INCREMENT,
+`commodity_type_name` VARCHAR(255) DEFAULT NULL COMMENT '商品分类名称',
+`last_modify_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+`create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`status` INT(11) not null COMMENT '状态',
+`modify_by` VARCHAR(255) DEFAULT NULL,
+`create_by` VARCHAR(255) DEFAULT NULL,
+PRIMARY KEY (`id`)
+)ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='商品表';
+
+
+
+
+
+
+
 create table IF NOT EXISTS t_yf_shop_commodity(
 `id` INT(11) NOT NULL AUTO_INCREMENT,
 `shop_id` INT(11) DEFAULT NULL COMMENT '商铺id',
-`shop_code` VARCHAR(255) DEFAULT NULL COMMENT '商铺编码，四位随机数字字母+年月日，不要O0I',
+`total_commodity_id` INT(11) DEFAULT NULL COMMENT '商品分类id，即商品表的主键id',
+`commodity_name` VARCHAR(255) DEFAULT NULL COMMENT '商品具体名称',
 `unit_price` DOUBLE(20,2) NULL COMMENT '单价',
 `stock` INT(20)  NULL COMMENT '库存',
+`month_sale_number` INT(20)  NULL COMMENT '每月售量',
+`month_sale_price` DOUBLE(20,2)  NULL COMMENT '每月售量总价',
+`total_sale_number` INT(20)  NULL COMMENT '总售量',
+`total_sale_price` DOUBLE(30,2)  NULL COMMENT '售量总价',
 `image_url` VARCHAR(255) DEFAULT NULL COMMENT '商品图片',
 `commodity_description` VARCHAR(255) DEFAULT NULL COMMENT '商品描述',
 `last_modify_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
@@ -88,6 +113,7 @@ create table IF NOT EXISTS t_yf_shop_commodity(
 `modify_by` VARCHAR(255) DEFAULT NULL,
 `create_by` VARCHAR(255) DEFAULT NULL,
 KEY `idx_shop_id` (`shop_id`),
+KEY `idx_commodity_id` (`commodity_id`),
 PRIMARY KEY (`id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='商铺商品关联表';
 
