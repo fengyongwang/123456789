@@ -61,7 +61,7 @@ create table IF NOT EXISTS t_yf_shop_user(
 `user_id` INT(11) DEFAULT NULL COMMENT '会员id',
 `shop_name` VARCHAR(255) DEFAULT NULL COMMENT '商铺名称',
 `shop_code` VARCHAR(255) DEFAULT NULL COMMENT '商铺编码，四位随机数字字母+年月日，不要O0I',
-`shop_address` VARCHAR(255) DEFAULT NULL COMMENT '商铺地址,省名称-市名称-区名称',
+`shop_address` VARCHAR(255) DEFAULT NULL COMMENT '商铺地址,省名称-市名称-区名称-***',
 `shop_contact` VARCHAR(255) DEFAULT NULL COMMENT '联系人',
 `shop_phone` VARCHAR(255) not null COMMENT '电话',
 `last_modify_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
@@ -113,7 +113,7 @@ create table IF NOT EXISTS t_yf_shop_commodity(
 `modify_by` VARCHAR(255) DEFAULT NULL,
 `create_by` VARCHAR(255) DEFAULT NULL,
 KEY `idx_shop_id` (`shop_id`),
-KEY `idx_commodity_id` (`commodity_id`),
+KEY `idx_total_commodity_id` (`total_commodity_id`),
 PRIMARY KEY (`id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='商铺商品关联表';
 

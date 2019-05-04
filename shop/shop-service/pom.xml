@@ -50,7 +50,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.wyf.shop.ShopApplication</mainClass>
+					<mainClass>com.merchant.shop.ShopApplication</mainClass>
 					<executable>true</executable>
 				</configuration>
 				<executions>
