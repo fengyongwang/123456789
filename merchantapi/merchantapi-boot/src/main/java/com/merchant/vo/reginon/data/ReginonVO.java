@@ -20,6 +20,11 @@ public class ReginonVO {
     @ApiModelProperty(value = "地区名字")
     private String areaName;
 
-    @ApiModelProperty(value = "地区id")
-    private Integer areaId;
+
+    /**
+     * 行政地区编号
+     */
+    @ApiModelProperty(value = "行政地区编号")
+    private String regionCode;
+
 }

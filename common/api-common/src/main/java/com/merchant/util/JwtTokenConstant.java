@@ -26,7 +26,7 @@ public class JwtTokenConstant {
      * cookie相关
      */
     public static final String TOKEN_ID_KEY = "id";
-    public static final String TOKEN_IDENTITY_KEY = "identity";
+    public static final String TOKEN_PHONE_KEY = "phone";
 
     public static final String TOKEN_COOKIE = "token";
 

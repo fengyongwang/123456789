@@ -24,6 +24,7 @@ public class ResultShopServiceCodeUtil {
 
 
 
+
     /**
      * 返回结果失败
      * @param result

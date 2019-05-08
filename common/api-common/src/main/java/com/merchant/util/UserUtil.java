@@ -37,9 +37,11 @@ public class UserUtil {
 
     /**
      * 验证码发送
+     * @param phone
      * @param msg
+     * @return
      */
-    public static boolean sendMessage(String msg){
+    public static boolean sendMessage(String phone,String msg){
 
         /**
          * TODO   未做

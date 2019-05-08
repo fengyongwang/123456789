@@ -2,7 +2,10 @@ package com.merchant.vo.reginon.request;
 
 import com.merchant.data.vo.request.CommonRequestVO;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * Description:
@@ -15,9 +18,11 @@ import lombok.Data;
 public class ReginonVORequest extends CommonRequestVO {
 
     /**
-     * 父级区域id
+     * 地区父code
      */
-    private Integer parentId;
+    @ApiModelProperty(value = "地区父code 如果查省父id为-1 必填")
+    @NotBlank
+    private String regionParentId;
 
 
 

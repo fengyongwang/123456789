@@ -24,4 +24,9 @@ public class PhoneVORequest extends CommonRequestVO {
     @NotBlank
     private String phone;
 
+    /**
+     * 手机验证码
+     */
+    @ApiModelProperty(value = "手机验证码 获取验证码不填，通过手机找回密码必填")
+    private String code;
 }

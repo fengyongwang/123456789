@@ -1,7 +1,7 @@
 package com.merchant.util;
 
 
-import com.merchant.shop.po.data.Region;
+import com.merchant.po.data.Reginon;
 import lombok.extern.log4j.Log4j;
 import org.xml.sax.*;
 
@@ -22,7 +22,7 @@ import java.io.File;
 public class MyDefaultHandler extends DefaultHandler {
 
 
-    Region region;
+    Reginon region;
 
     public void startDocument() throws SAXException {
 
@@ -32,19 +32,19 @@ public class MyDefaultHandler extends DefaultHandler {
 
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if("provinceList".equals(qName)){
-            region=new Region();
+            region=new Reginon();
             region.setRegionLevel(1);
 //            region.setRegionParentId(-1);
         }
 
         if("cityList".equals(qName)){
-            region=new Region();
+            region=new Reginon();
             region.setRegionLevel(2);
 //            region.setRegionParentId(1);
         }
 
         if("areaList".equals(qName)){
-            region=new Region();
+            region=new Reginon();
             region.setRegionLevel(3);
 //            region.setRegionParentId(2);
         }

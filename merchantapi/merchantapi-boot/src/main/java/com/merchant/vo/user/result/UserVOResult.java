@@ -22,14 +22,32 @@ public class UserVOResult extends CommonResultVO {
 
 
     /**
+     * 主键id
+     */
+    @ApiModelProperty(value="主键id")
+    private Integer id;
+    /**
+     * 手机号
+     */
+    @ApiModelProperty(value="手机号")
+    private String phone;
+
+    /**
+     * 用户名
+     */
+    @ApiModelProperty(value="用户名")
+    private String userName;
+
+    /**
+     * 类型 客户100or商家200
+     */
+    @ApiModelProperty(value="类型 客户100or商家200")
+    private Integer type;
+
+    /**
      * token 信息
      */
     @ApiModelProperty(value = "token信息")
     private String token;
 
-    /**
-     * 用户信息集合
-     */
-    @ApiModelProperty(value = "用户信息集合")
-    private List<UserVO> userList;
 }

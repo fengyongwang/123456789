@@ -44,6 +44,4 @@ public class UserVO {
     @ApiModelProperty(value="类型 客户100or商家200")
     private Integer type;
 
-
-
 }
