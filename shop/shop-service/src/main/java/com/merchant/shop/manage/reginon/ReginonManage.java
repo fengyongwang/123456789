@@ -1,7 +1,7 @@
 package com.merchant.shop.manage.reginon;
 
-import com.merchant.shop.bo.request.ReginonBORequest;
-import com.merchant.shop.bo.result.ReginonBOResult;
+import com.merchant.shop.bo.reginon.request.ReginonBORequest;
+import com.merchant.shop.bo.reginon.result.ReginonBOResult;
 
 /**
  * Description:

@@ -6,9 +6,9 @@ import com.merchant.data.vo.result.CommonResultVO;
 import com.merchant.group.Create;
 import com.merchant.group.Delete;
 import com.merchant.group.Update;
-import com.merchant.bo.shopuser.request.ShopUserBORequest;
-import com.merchant.bo.shopuser.result.ShopUserBOResult;
-import com.merchant.user.service.shopuser.ShopUserService;
+import com.merchant.shop.bo.shopuser.request.ShopUserBORequest;
+import com.merchant.shop.bo.shopuser.result.ShopUserBOResult;
+import com.merchant.shop.service.ShopUserService;
 import com.merchant.util.ResultCodeUtil;
 import com.merchant.vo.shop.param.ShopUserParam;
 import com.merchant.vo.shop.request.ShopUserVORequest;
@@ -49,8 +49,15 @@ public class ShopUserController extends BaseController {
     public ShopUserVOResult createShop(HttpServletRequest request, HttpServletResponse response, @RequestBody @Validated({Create.class}) ShopUserParam shopUserVORequest) {
 
         ShopUserVOResult shopUserVOResult = new ShopUserVOResult();
-
+       Integer userId= super.getUserId(request);
+       if(userId==null){
+           return shopUserVOResult;
+       }
         ShopUserBORequest shopUserBORequest = convertManager.tran(shopUserVORequest, ShopUserBORequest.class);
+        /**
+         * TODO 向ShopUserBORequest 中set进其他得值
+         */
+
         ShopUserBOResult shopUserBOResult = shopUserService.insertShop(shopUserBORequest);
         if (shopUserBOResult.isSuccess()) {
             shopUserVOResult = convertManager.tran(shopUserBOResult, ShopUserVOResult.class);

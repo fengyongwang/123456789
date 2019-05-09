@@ -1,4 +1,4 @@
-package com.merchant.shop.bo.request;
+package com.merchant.shop.bo.reginon.request;
 
 import com.merchant.bo.CommonBORequest;
 import lombok.Data;

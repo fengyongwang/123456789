@@ -1,5 +1,6 @@
 package com.merchant.controller;
 
+import com.merchant.util.JwtTokenConstant;
 import lombok.extern.log4j.Log4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -18,9 +19,19 @@ public abstract class BaseController {
 
     @ExceptionHandler
     public String handler(HttpServletRequest request, HttpServletResponse response, Exception e) {
-        log.error("api boot  error ...",e);
+        log.error("api boot  error ... in BaseController",e);
 
         return e.toString();
+    }
+
+    protected  Integer getUserId(HttpServletRequest request){
+      return (Integer)request.getAttribute(JwtTokenConstant.TOKEN_COOKIE);
+
+    }
+
+
+    protected String getPhone(HttpServletRequest request){
+        return (String)request.getAttribute(JwtTokenConstant.TOKEN_COOKIE);
     }
 
 }

@@ -106,11 +106,12 @@ public class LoginController extends BaseController {
     @RequestMapping("/login")
     public UserVOResult login(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) @Validated({Login.class}) UserVORequest userVORequest) {
         UserVOResult userVOResult = new UserVOResult();
+        log.info("login start in LoginController ...");
         /**
          * 清除cookie
          */
         this.removeRequestCookies(request,response);
-        log.info("login start in LoginController ...");
+
         UserBOResult userBOResult = loginService.login(convertManager.tran(userVORequest, UserBORequest.class));
         if (userBOResult.isFailed()) {
             log.error("login error in LoginController ...");
@@ -144,8 +145,13 @@ public class LoginController extends BaseController {
             return commonResultVO;
         }
 
+        CommonBOResult commonBOResult=loginService.retrievePassword(convertManager.tran(smsVORequest,UserBORequest.class));
+        if(commonBOResult.isFailed()){
+            log.error("retrievePassword by phone error in loginController ...");
+            return commonResultVO;
+        }
 
-
+        ResultCodeUtil.resultSuccess(commonResultVO);
         return commonResultVO;
     }
 

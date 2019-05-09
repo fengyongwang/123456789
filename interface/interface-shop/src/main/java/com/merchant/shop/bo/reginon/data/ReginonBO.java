@@ -1,4 +1,4 @@
-package com.merchant.shop.bo.data;
+package com.merchant.shop.bo.reginon.data;
 
 import lombok.Data;
 
