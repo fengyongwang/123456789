@@ -19,4 +19,15 @@ public interface ShopUserService {
      */
     ShopUserBOResult insertShop(ShopUserBORequest shopUserBORequest);
 
+
+    /**
+     * 根据条件查询
+     * @param shopUserBORequest
+     * @return
+     */
+    ShopUserBOResult queryShopUserByRequest(ShopUserBORequest shopUserBORequest);
+
+
+
+
 }

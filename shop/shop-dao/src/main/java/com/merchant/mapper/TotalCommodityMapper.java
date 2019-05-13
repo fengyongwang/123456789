@@ -1,7 +1,7 @@
 package com.merchant.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.merchant.po.data.Commodity;
+import com.merchant.po.data.TotalCommodity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,5 +11,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2019/5/4
  */
 @Mapper
-public interface CommodityMapper extends BaseMapper<Commodity> {
+public interface TotalCommodityMapper extends BaseMapper<TotalCommodity> {
 }

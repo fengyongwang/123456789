@@ -23,26 +23,6 @@ public class ShopUserVORequest extends CommonRequestVO {
     @NotNull(groups = {Delete.class})
     private Integer shopId;
 
-    /**
-     * 商铺名称
-     */
-    @ApiModelProperty(value = "商铺名称 查询选填")
-    private String shopName;
 
-    /**
-     * 商铺地址
-     */
-    @ApiModelProperty(value = "商铺地址 查询选填")
-    private String shopAddress;
-    /**
-     * 商铺联系人
-     */
-    @ApiModelProperty(value = "商铺联系人 查询选填")
-    private String shopContact;
-    /**
-     * 商铺电话
-     */
-    @ApiModelProperty(value = "商铺电话 查询选填")
-    private String shopPhone;
 
 }

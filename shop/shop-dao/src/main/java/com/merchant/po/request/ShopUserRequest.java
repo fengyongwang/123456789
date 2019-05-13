@@ -30,13 +30,22 @@ public class ShopUserRequest extends CommonRequestPO {
     private Integer userId;
 
     /**
+     * 商铺营业分类集合ids
+     */
+    private List<Integer>totalCommodityIds;
+
+    /**
+     * 商铺营业分类id
+     */
+    private Integer totalCommodityId;
+    /**
      * 商家ids
      */
     private List<Integer> userIds;
     /**
      * 门店编码
      */
-    private Integer shopCode;
+    private String shopCode;
 
     /**
      * 门店联系人

@@ -1,7 +1,7 @@
 package com.merchant.po.result;
 
 import com.merchant.data.po.result.CommonResultPO;
-import com.merchant.po.data.Commodity;
+import com.merchant.po.data.TotalCommodity;
 
 /**
  * Description:
@@ -9,5 +9,5 @@ import com.merchant.po.data.Commodity;
  * @author wangyf
  * @date 2019/5/4
  */
-public class CommodityResult extends CommonResultPO<Commodity> {
+public class TotalCommodityResult extends CommonResultPO<TotalCommodity> {
 }

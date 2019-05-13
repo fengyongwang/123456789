@@ -28,4 +28,9 @@ public class ShopUserServiceImpl implements ShopUserService {
     public ShopUserBOResult insertShop(ShopUserBORequest shopUserBORequest) {
         return this.shopUserManager.insertShop(shopUserBORequest);
     }
+
+    @Override
+    public ShopUserBOResult queryShopUserByRequest(ShopUserBORequest shopUserBORequest) {
+        return this.shopUserManager.queryShopUserByRequest(shopUserBORequest);
+    }
 }

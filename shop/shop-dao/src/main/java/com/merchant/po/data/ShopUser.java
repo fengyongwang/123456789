@@ -29,6 +29,10 @@ public class ShopUser {
      */
     private Integer userId;
     /**
+     * 营业商品分类id
+     */
+    private Integer totalCommodityId;
+    /**
      * 门店编码
      */
     private Integer shopCode;

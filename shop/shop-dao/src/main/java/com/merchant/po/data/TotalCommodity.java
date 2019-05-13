@@ -17,7 +17,7 @@ import java.util.Date;
 @Data
 @ToString
 @TableName(value = "t_yf_total_commodity")
-public class Commodity {
+public class TotalCommodity {
 
     /**
      * 主键id

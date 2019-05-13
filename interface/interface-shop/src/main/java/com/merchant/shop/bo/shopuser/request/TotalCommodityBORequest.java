@@ -1,6 +1,6 @@
-package com.merchant.po.request;
+package com.merchant.shop.bo.shopuser.request;
 
-import com.merchant.data.po.request.CommonRequestPO;
+import com.merchant.bo.CommonBORequest;
 import lombok.Data;
 
 import java.util.List;
@@ -9,22 +9,24 @@ import java.util.List;
  * Description:
  *
  * @author wangyf
- * @date 2019/5/4
+ * @date 2019/5/13
  */
 @Data
-public class CommodityRequest extends CommonRequestPO {
+public class TotalCommodityBORequest extends CommonBORequest {
+
 
     /**
      * 主键id
      */
     private Integer id;
     /**
-     *商品分类名称
+     * 商品分类名称
      */
     private String commodityTypeName;
 
     /**
      * 主键ids
      */
-    private List<Integer>ids;
+    private List<Integer> ids;
+
 }

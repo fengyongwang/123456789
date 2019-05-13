@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * Description:
@@ -22,9 +24,15 @@ public class ShopUserParam  {
      * 商铺id
      */
     @ApiModelProperty(value = "商铺id,修改必填,增不填")
-    @NotBlank(groups = {Update.class})
+    @NotNull(groups = {Update.class})
     private Integer shopId;
 
+    /**
+     * 主营商品分类id
+     */
+    @ApiModelProperty(value = "主营商品分类id,增改必填")
+    @NotNull(groups = {Create.class,Update.class})
+    private Integer totalCommodityId;
     /**
      * 商铺名称
      */

@@ -1,5 +1,6 @@
 package com.merchant.controller.shop;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.merchant.controller.BaseController;
 import com.merchant.convert.ConvertManager;
 import com.merchant.data.vo.result.CommonResultVO;
@@ -7,12 +8,16 @@ import com.merchant.group.Create;
 import com.merchant.group.Delete;
 import com.merchant.group.Update;
 import com.merchant.shop.bo.shopuser.request.ShopUserBORequest;
+import com.merchant.shop.bo.shopuser.request.TotalCommodityBORequest;
 import com.merchant.shop.bo.shopuser.result.ShopUserBOResult;
+import com.merchant.shop.bo.shopuser.result.TotalCommodityBOResult;
 import com.merchant.shop.service.ShopUserService;
+import com.merchant.shop.service.TotalCommodityService;
 import com.merchant.util.ResultCodeUtil;
 import com.merchant.vo.shop.param.ShopUserParam;
 import com.merchant.vo.shop.request.ShopUserVORequest;
 import com.merchant.vo.shop.result.ShopUserVOResult;
+import com.merchant.vo.shop.result.TotalCommodityVOResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j;
@@ -41,27 +46,47 @@ public class ShopUserController extends BaseController {
     @Resource
     private ConvertManager convertManager;
 
-    @Resource
+    @Reference
     private ShopUserService shopUserService;
 
-    @ApiOperation(value = "create-shop", notes = "我要开店")
+
+    @Reference
+    private TotalCommodityService totalCommodityService;
+
+    @ApiOperation(value = "to-create-shop", notes = "去开店")
+    @RequestMapping("/to-create-shop")
+    public TotalCommodityVOResult toCreateShop(HttpServletRequest request, HttpServletResponse response) {
+        TotalCommodityVOResult totalCommodityVOResult = new TotalCommodityVOResult();
+        log.info("query all commodity type start in toCreateShop ...");
+        TotalCommodityBORequest totalCommodityBORequest = new TotalCommodityBORequest();
+        TotalCommodityBOResult totalCommodityBOResult = totalCommodityService.queryTotalCommodity(totalCommodityBORequest);
+        if (totalCommodityBOResult.isFailed()) {
+            log.error("query all commodity type error in toCreateShop ...");
+            return totalCommodityVOResult;
+        }
+        totalCommodityVOResult= convertManager.tran(totalCommodityBOResult,TotalCommodityVOResult.class);
+        ResultCodeUtil.resultSuccess(totalCommodityVOResult);
+        return totalCommodityVOResult;
+    }
+
+
+    @ApiOperation(value = "create-shop", notes = "开店")
     @RequestMapping("/create-shop")
     public ShopUserVOResult createShop(HttpServletRequest request, HttpServletResponse response, @RequestBody @Validated({Create.class}) ShopUserParam shopUserVORequest) {
 
         ShopUserVOResult shopUserVOResult = new ShopUserVOResult();
-       Integer userId= super.getUserId(request);
-       if(userId==null){
-           return shopUserVOResult;
-       }
+        Integer userId = super.getUserId(request);
+        if (userId == null) {
+            log.error("sorry ,you do not login in createShop ...");
+            return shopUserVOResult;
+        }
         ShopUserBORequest shopUserBORequest = convertManager.tran(shopUserVORequest, ShopUserBORequest.class);
-        /**
-         * TODO 向ShopUserBORequest 中set进其他得值
-         */
-
+        shopUserBORequest.setUserId(userId);
         ShopUserBOResult shopUserBOResult = shopUserService.insertShop(shopUserBORequest);
         if (shopUserBOResult.isSuccess()) {
             shopUserVOResult = convertManager.tran(shopUserBOResult, ShopUserVOResult.class);
             ResultCodeUtil.resultSuccess(shopUserVOResult);
+            log.info("Congratulations! create shop success ...");
         }
         return shopUserVOResult;
     }
@@ -70,9 +95,19 @@ public class ShopUserController extends BaseController {
     @RequestMapping("/query-shop")
     public ShopUserVOResult queryMyShopByRequest(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) ShopUserVORequest shopUserVORequest) {
         ShopUserVOResult shopUserVOResult = new ShopUserVOResult();
-        /**
-         * TODO 按照创建时间排序，最早开的店第一个
-         */
+        Integer userId = this.getUserId(request);
+        if (userId == null) {
+            log.error("sorry ,you do not login in queryShop ...");
+            return shopUserVOResult;
+        }
+
+        ShopUserBORequest shopUserBORequest = convertManager.tran(shopUserVORequest, ShopUserBORequest.class);
+        shopUserBORequest.setUserId(userId);
+        ShopUserBOResult shopUserBOResult = shopUserService.queryShopUserByRequest(shopUserBORequest);
+        if (shopUserBOResult.isSuccess()) {
+            shopUserVOResult = convertManager.tran(shopUserBOResult, ShopUserVOResult.class);
+            ResultCodeUtil.resultSuccess(shopUserVOResult);
+        }
         return shopUserVOResult;
     }
 
@@ -91,9 +126,6 @@ public class ShopUserController extends BaseController {
 
         return commonResultVO;
     }
-
-
-
 
 
 }
