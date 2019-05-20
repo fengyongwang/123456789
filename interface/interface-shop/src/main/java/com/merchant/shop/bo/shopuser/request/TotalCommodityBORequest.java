@@ -1,6 +1,6 @@
 package com.merchant.shop.bo.shopuser.request;
 
-import com.merchant.bo.CommonBORequest;
+import com.merchant.user.bo.CommonBORequest;
 import lombok.Data;
 
 import java.util.List;

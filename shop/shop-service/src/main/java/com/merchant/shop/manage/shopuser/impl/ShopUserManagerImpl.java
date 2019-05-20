@@ -1,18 +1,18 @@
 package com.merchant.shop.manage.shopuser.impl;
 
+import com.merchant.user.bo.CommonBOResult;
 import com.merchant.convert.ConvertManager;
-import com.merchant.dao.ShopUserDao;
+import com.merchant.user.dao.ShopUserDao;
 import com.merchant.data.StatusEnum;
-import com.merchant.po.data.ShopUser;
-import com.merchant.po.request.ShopUserRequest;
-import com.merchant.po.result.ShopUserResult;
+import com.merchant.user.po.data.ShopUser;
+import com.merchant.user.po.request.ShopUserRequest;
+import com.merchant.user.po.result.ShopUserResult;
 import com.merchant.shop.bo.shopuser.data.ShopUserBO;
 import com.merchant.shop.bo.shopuser.request.ShopUserBORequest;
 import com.merchant.shop.bo.shopuser.result.ShopUserBOResult;
 import com.merchant.shop.constant.ShopUserConfig;
 import com.merchant.shop.manage.shopuser.ShopUserManager;
 import com.merchant.shop.util.ResultShopServiceCodeUtil;
-import com.merchant.util.ResultShopUtil;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Component;
 
@@ -47,7 +47,7 @@ public class ShopUserManagerImpl implements ShopUserManager {
             return shopUserBOResult;
         }
         shopUserBORequest.setShopCode(shopCode);
-        ShopUser shopUser=convertManager.tran(shopUserBORequest, ShopUser.class);
+        ShopUser shopUser = convertManager.tran(shopUserBORequest, ShopUser.class);
         shopUser.setStatus(StatusEnum.EFFECTIVE.getValue());
         ShopUserResult shopUserResult = shopUserDao.insertUser(shopUser);
 
@@ -62,17 +62,35 @@ public class ShopUserManagerImpl implements ShopUserManager {
 
     @Override
     public ShopUserBOResult queryShopUserByRequest(ShopUserBORequest shopUserBORequest) {
-        ShopUserBOResult shopUserBOResult=new ShopUserBOResult();
+        ShopUserBOResult shopUserBOResult = new ShopUserBOResult();
 
-        ShopUserResult shopUserResult=shopUserDao.queryShopUserByRequest(convertManager.tran(shopUserBORequest,ShopUserRequest.class));
-        if(!shopUserResult.isSuccess()){
+        ShopUserResult shopUserResult = shopUserDao.queryShopUserByRequest(convertManager.tran(shopUserBORequest, ShopUserRequest.class));
+        if (!shopUserResult.isSuccess()) {
             log.error("query shopUser by request error in queryShopUserByRequest ...");
             return shopUserBOResult;
         }
 
-        shopUserBOResult.setShopUserList(convertManager.convertList(shopUserResult.getValues(),ShopUserBO.class));
+        shopUserBOResult.setShopUserList(convertManager.convertList(shopUserResult.getValues(), ShopUserBO.class));
         ResultShopServiceCodeUtil.resultSuccess(shopUserBOResult);
         return shopUserBOResult;
+    }
+
+    @Override
+    public CommonBOResult updateShopByRequest(ShopUserBORequest shopUserBORequest) {
+        CommonBOResult commonBOResult = new CommonBOResult();
+        ShopUserResult shopUserResult = shopUserDao.updateShopUserById(convertManager.tran(shopUserBORequest, ShopUser.class));
+        if (!shopUserResult.isSuccess()) {
+            log.error("update shop by request in ShopUserManagerImpl error ...");
+            return commonBOResult;
+        }
+
+        if (shopUserResult.getCount() == 0) {
+            log.warn("sorry, do not query this shop ...");
+            return commonBOResult;
+        }
+        ResultShopServiceCodeUtil.resultSuccess(commonBOResult);
+
+        return commonBOResult;
     }
 
     /**

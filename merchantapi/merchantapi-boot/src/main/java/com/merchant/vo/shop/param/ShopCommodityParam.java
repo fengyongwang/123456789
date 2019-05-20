@@ -25,7 +25,12 @@ public class ShopCommodityParam  {
     @ApiModelProperty(value = "商品id 修改必填，增加不填")
     @NotNull(groups = {Update.class})
     private Integer id;
-
+    /**
+     * 商铺id
+     */
+    @ApiModelProperty(value = "商铺Id 必填")
+    @NotNull(groups = {Create.class, Update.class})
+    private Integer shopId;
 
     /**
      * 总的商品分类id

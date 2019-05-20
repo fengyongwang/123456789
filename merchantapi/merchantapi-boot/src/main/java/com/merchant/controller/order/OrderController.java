@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @Log4j
 @RestController
 @RequestMapping(value = "/merchant/order", method = RequestMethod.POST)
-@Api(tags = "商铺订单相关操作")
+@Api(tags = "v1.0.0商铺订单相关操作")
 public class OrderController extends BaseController {
 
     @ApiOperation(value = "query-order",notes = "商家查询该商铺得订单查询订单")

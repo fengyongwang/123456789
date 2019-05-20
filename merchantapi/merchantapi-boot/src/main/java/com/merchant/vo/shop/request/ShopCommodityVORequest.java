@@ -20,47 +20,47 @@ public class ShopCommodityVORequest extends CommonRequestVO {
     /**
      * 主键id
      */
-    @ApiModelProperty(value = "主键id，下架时必传")
+    @ApiModelProperty(value = "主键id,下架时必传,查询时不传")
     @NotNull(groups = {Delete.class})
     private Integer id;
     /**
      * 最大单价
      */
-    @ApiModelProperty(value = "最大单价")
+    @ApiModelProperty(value = "最大单价,下架时不传,查询时选传")
     private Double maxUnitPrice;
     /**
      * 最小单价
      */
-    @ApiModelProperty(value = "最小单价")
+    @ApiModelProperty(value = "最小单价,下架时不传,查询时选传")
     private Double minUnitPrice;
     /**
      * 最大库存
      */
-    @ApiModelProperty(value = "最大库存")
+    @ApiModelProperty(value = "最大库存,下架时不传,查询时选传")
     private Integer maxStock;
     /**
      * 最小库存
      */
-    @ApiModelProperty(value = "最小库存")
+    @ApiModelProperty(value = "最小库存,下架时不传,查询时选传")
     private Integer minStock;
     /**
      * 最大月销量
      */
-    @ApiModelProperty(value = "最大月销量")
+    @ApiModelProperty(value = "最大月销量,下架时不传,查询时选传")
     private Integer maxMonthSaleNumber;
     /**
      * 最小月销量
      */
-    @ApiModelProperty(value = "最小月销量")
+    @ApiModelProperty(value = "最小月销量,下架时不传,查询时选传")
     private Integer minMonthSaleNumber;
     /**
      * 最大总销量
      */
-    @ApiModelProperty(value = "最大总销量")
+    @ApiModelProperty(value = "最大总销量,下架时不传,查询时选传")
     private Integer maxTotalSaleNumber;
     /**
      * 最小总销量
      */
-    @ApiModelProperty(value = "最小总销量")
+    @ApiModelProperty(value = "最小总销量,下架时不传,查询时选传")
     private Integer minTotalSaleNumber;
 }

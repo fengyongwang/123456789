@@ -6,7 +6,7 @@ import com.merchant.convert.ConvertManager;
 import com.merchant.shop.bo.reginon.request.ReginonBORequest;
 import com.merchant.shop.bo.reginon.result.ReginonBOResult;
 import com.merchant.shop.service.ReginonService;
-import com.merchant.util.ResultCodeUtil;
+import com.merchant.user.util.ResultCodeUtil;
 import com.merchant.vo.reginon.request.ReginonVORequest;
 import com.merchant.vo.reginon.result.ReginonVOResult;
 import io.swagger.annotations.Api;

@@ -1,6 +1,6 @@
 package com.merchant.shop.bo.shopuser.result;
 
-import com.merchant.bo.CommonBOResult;
+import com.merchant.user.bo.CommonBOResult;
 import com.merchant.shop.bo.shopuser.data.TotalCommodityBO;
 import lombok.Data;
 

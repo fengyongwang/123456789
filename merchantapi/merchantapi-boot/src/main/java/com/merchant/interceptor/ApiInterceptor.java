@@ -1,12 +1,11 @@
 package com.merchant.interceptor;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.merchant.bo.token.request.TokenBORequest;
-import com.merchant.bo.token.result.TokenBOResult;
-import com.merchant.data.vo.result.CommonResultVO;
-import com.merchant.service.login.JwtTokenService;
-import com.merchant.util.JwtToken;
-import com.merchant.util.JwtTokenConstant;
+import com.merchant.user.bo.token.request.TokenBORequest;
+import com.merchant.user.bo.token.result.TokenBOResult;
+import com.merchant.user.service.JwtTokenService;
+import com.merchant.user.util.JwtToken;
+import com.merchant.user.util.JwtTokenConstant;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

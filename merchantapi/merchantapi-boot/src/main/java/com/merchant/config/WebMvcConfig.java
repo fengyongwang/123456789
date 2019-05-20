@@ -48,7 +48,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * @return 路径名称
      */
     private String[] interceptorPath() {
-        return new String[]{"/api/**"};
+        return new String[]{"/merchant/**"};
     }
 
 
@@ -58,11 +58,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * @return 路径名称
      */
     private String[] unInterceptorPath() {
-        /**
-         * TODO 未做
-         */
-        return null;
-//        return new String[]{"/api/user/get-sms-code", "/api/user/weixin-login", "/api/user/login","/api/report/build-report"};
+
+        return new String[]{"/merchant/user/get-sms-code", "/merchant/user/registered", "/merchant/user/login",
+                "/merchant/user/retrieve-password","/merchant/region/query-area"};
     }
 
     /**

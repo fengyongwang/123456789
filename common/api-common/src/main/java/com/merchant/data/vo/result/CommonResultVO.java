@@ -1,6 +1,6 @@
 package com.merchant.data.vo.result;
 
-import com.merchant.util.ResultConstant;
+import com.merchant.user.util.ResultConstant;
 
 /**
  * Description:

@@ -1,9 +1,9 @@
 package com.merchant.shop.manage.reginon.impl;
 
 import com.merchant.convert.ConvertManager;
-import com.merchant.dao.RegionDao;
-import com.merchant.po.request.ReginonRequest;
-import com.merchant.po.result.ReginonResult;
+import com.merchant.user.dao.RegionDao;
+import com.merchant.user.po.request.ReginonRequest;
+import com.merchant.user.po.result.ReginonResult;
 import com.merchant.shop.bo.reginon.data.ReginonBO;
 import com.merchant.shop.bo.reginon.request.ReginonBORequest;
 import com.merchant.shop.bo.reginon.result.ReginonBOResult;

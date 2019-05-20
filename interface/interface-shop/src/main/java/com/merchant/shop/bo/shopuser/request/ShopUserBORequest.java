@@ -1,7 +1,6 @@
 package com.merchant.shop.bo.shopuser.request;
 
-import com.merchant.bo.CommonBORequest;
-import io.swagger.annotations.ApiModelProperty;
+import com.merchant.user.bo.CommonBORequest;
 import lombok.Data;
 
 /**
@@ -47,4 +46,10 @@ public class ShopUserBORequest extends CommonBORequest {
      * 商铺电话
      */
     private String shopPhone;
+
+    /**
+     * 状态
+     */
+    private Integer status;
+
 }

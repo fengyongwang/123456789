@@ -1,6 +1,6 @@
 package com.merchant.shop.bo.reginon.result;
 
-import com.merchant.bo.CommonBOResult;
+import com.merchant.user.bo.CommonBOResult;
 import com.merchant.shop.bo.reginon.data.ReginonBO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

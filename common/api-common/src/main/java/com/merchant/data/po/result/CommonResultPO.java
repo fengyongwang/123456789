@@ -1,6 +1,6 @@
 package com.merchant.data.po.result;
 
-import com.merchant.util.ResultConstant;
+import com.merchant.user.util.ResultConstant;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

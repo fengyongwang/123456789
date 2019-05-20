@@ -22,7 +22,7 @@ public class UserApplication {
         try {
             Properties properties = new Properties();
             properties.load(UserApplication.class.getResourceAsStream("/system.properties"));
-            properties.load(UserApplication.class.getResourceAsStream("/sentry.properties"));
+
 
             SpringApplication app = new SpringApplication(UserApplication.class);
             app.setDefaultProperties(properties);

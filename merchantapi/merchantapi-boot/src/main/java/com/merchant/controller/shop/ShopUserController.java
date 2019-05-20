@@ -1,8 +1,10 @@
 package com.merchant.controller.shop;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.merchant.user.bo.CommonBOResult;
 import com.merchant.controller.BaseController;
 import com.merchant.convert.ConvertManager;
+import com.merchant.data.StatusEnum;
 import com.merchant.data.vo.result.CommonResultVO;
 import com.merchant.group.Create;
 import com.merchant.group.Delete;
@@ -13,7 +15,7 @@ import com.merchant.shop.bo.shopuser.result.ShopUserBOResult;
 import com.merchant.shop.bo.shopuser.result.TotalCommodityBOResult;
 import com.merchant.shop.service.ShopUserService;
 import com.merchant.shop.service.TotalCommodityService;
-import com.merchant.util.ResultCodeUtil;
+import com.merchant.user.util.ResultCodeUtil;
 import com.merchant.vo.shop.param.ShopUserParam;
 import com.merchant.vo.shop.request.ShopUserVORequest;
 import com.merchant.vo.shop.result.ShopUserVOResult;
@@ -40,7 +42,7 @@ import javax.servlet.http.HttpServletResponse;
 @Log4j
 @RestController
 @RequestMapping(value = "/merchant/shop", method = RequestMethod.POST)
-@Api(tags = "商家店铺相关操作")
+@Api(tags = "v1.0.0商家店铺相关操作")
 public class ShopUserController extends BaseController {
 
     @Resource
@@ -64,7 +66,7 @@ public class ShopUserController extends BaseController {
             log.error("query all commodity type error in toCreateShop ...");
             return totalCommodityVOResult;
         }
-        totalCommodityVOResult= convertManager.tran(totalCommodityBOResult,TotalCommodityVOResult.class);
+        totalCommodityVOResult = convertManager.tran(totalCommodityBOResult, TotalCommodityVOResult.class);
         ResultCodeUtil.resultSuccess(totalCommodityVOResult);
         return totalCommodityVOResult;
     }
@@ -115,7 +117,19 @@ public class ShopUserController extends BaseController {
     @RequestMapping("/update-shop")
     public CommonResultVO updateMyShopByRequest(HttpServletRequest request, HttpServletResponse response, @RequestBody @Validated({Update.class}) ShopUserParam shopUserVORequest) {
         CommonResultVO commonResultVO = new CommonResultVO();
-
+        Integer userId = super.getUserId(request);
+        if (userId == null) {
+            log.error("sorry ,you do not login in updateShop ...");
+            return commonResultVO;
+        }
+        ShopUserBORequest shopUserBORequest = convertManager.tran(shopUserVORequest, ShopUserBORequest.class);
+        shopUserBORequest.setUserId(userId);
+        CommonBOResult commonBOResult = shopUserService.updateShopByRequest(shopUserBORequest);
+        if (commonBOResult.isFailed()) {
+            log.error("update my shop by request in controller error ...");
+            return commonResultVO;
+        }
+        ResultCodeUtil.resultSuccess(commonResultVO);
         return commonResultVO;
     }
 
@@ -124,6 +138,14 @@ public class ShopUserController extends BaseController {
     public CommonResultVO deleteMyShop(HttpServletRequest request, HttpServletResponse response, @RequestBody @Validated({Delete.class}) ShopUserVORequest shopUserVORequest) {
         CommonResultVO commonResultVO = new CommonResultVO();
 
+        ShopUserBORequest shopUserBORequest = convertManager.tran(shopUserVORequest, ShopUserBORequest.class);
+        shopUserBORequest.setStatus(StatusEnum.INVALID.getValue());
+
+        CommonBOResult commonBOResult = shopUserService.updateShopByRequest(shopUserBORequest);
+        if (commonBOResult.isFailed()) {
+            log.error("delete my shop error ...");
+        }
+        ResultCodeUtil.resultSuccess(commonResultVO);
         return commonResultVO;
     }
 

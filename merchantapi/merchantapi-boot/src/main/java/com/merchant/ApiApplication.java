@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -17,6 +18,7 @@ import java.util.Properties;
 @Log4j
 @SpringBootApplication
 @EnableEurekaClient
+@EnableSwagger2
 public class ApiApplication {
 
     public static void main(String[] args) {

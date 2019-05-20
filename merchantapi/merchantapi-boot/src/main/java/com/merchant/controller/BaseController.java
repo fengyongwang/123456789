@@ -1,6 +1,6 @@
 package com.merchant.controller;
 
-import com.merchant.util.JwtTokenConstant;
+import com.merchant.user.util.JwtTokenConstant;
 import lombok.extern.log4j.Log4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -24,12 +24,21 @@ public abstract class BaseController {
         return e.toString();
     }
 
+    /**
+     * 获取商户得userId
+     * @param request
+     * @return
+     */
     protected  Integer getUserId(HttpServletRequest request){
       return (Integer)request.getAttribute(JwtTokenConstant.TOKEN_COOKIE);
 
     }
 
-
+    /**
+     * 获取商户得手机号
+     * @param request
+     * @return
+     */
     protected String getPhone(HttpServletRequest request){
         return (String)request.getAttribute(JwtTokenConstant.TOKEN_COOKIE);
     }

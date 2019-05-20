@@ -1,5 +1,6 @@
 package com.merchant.shop.service.shopuser;
 
+import com.merchant.user.bo.CommonBOResult;
 import com.merchant.shop.bo.shopuser.request.ShopUserBORequest;
 import com.merchant.shop.bo.shopuser.result.ShopUserBOResult;
 import com.merchant.shop.manage.shopuser.ShopUserManager;
@@ -32,5 +33,12 @@ public class ShopUserServiceImpl implements ShopUserService {
     @Override
     public ShopUserBOResult queryShopUserByRequest(ShopUserBORequest shopUserBORequest) {
         return this.shopUserManager.queryShopUserByRequest(shopUserBORequest);
+    }
+
+    @Override
+    public CommonBOResult updateShopByRequest(ShopUserBORequest shopUserBORequest) {
+
+
+        return this.shopUserManager.updateShopByRequest(shopUserBORequest);
     }
 }

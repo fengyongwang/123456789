@@ -1,18 +1,17 @@
 package com.merchant.controller.user;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.merchant.bo.CommonBOResult;
-import com.merchant.bo.user.request.UserBORequest;
-import com.merchant.bo.user.result.UserBOResult;
+import com.merchant.user.bo.CommonBOResult;
+import com.merchant.user.bo.user.request.UserBORequest;
+import com.merchant.user.bo.user.result.UserBOResult;
 import com.merchant.controller.BaseController;
 import com.merchant.convert.ConvertManager;
 import com.merchant.data.vo.result.CommonResultVO;
 import com.merchant.group.Login;
 import com.merchant.group.Registered;
-import com.merchant.service.login.LoginService;
-import com.merchant.util.JwtTokenConstant;
-import com.merchant.util.ResultCodeUtil;
-import com.merchant.vo.user.data.UserVO;
+import com.merchant.user.service.LoginService;
+import com.merchant.user.util.JwtTokenConstant;
+import com.merchant.user.util.ResultCodeUtil;
 import com.merchant.vo.user.request.PhoneVORequest;
 import com.merchant.vo.user.request.UserVORequest;
 import com.merchant.vo.user.result.UserVOResult;
