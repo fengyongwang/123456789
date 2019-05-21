@@ -5,6 +5,7 @@ import com.merchant.shop.bo.shopuser.request.ShopUserBORequest;
 import com.merchant.shop.bo.shopuser.result.ShopUserBOResult;
 import com.merchant.shop.manage.shopuser.ShopUserManager;
 import com.merchant.shop.service.ShopUserService;
+import com.merchant.user.bo.ResultConstant;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,19 @@ public class ShopUserServiceImpl implements ShopUserService {
 
     @Override
     public ShopUserBOResult insertShop(ShopUserBORequest shopUserBORequest) {
+        ShopUserBORequest request = new ShopUserBORequest();
+        request.setShopPhone(shopUserBORequest.getShopPhone());
+        ShopUserBOResult shopUserBOResult = this.shopUserManager.queryShopUserByRequest(request);
+        if (shopUserBOResult.isFailed()) {
+            log.error("query shopUser By phone error in insertShop ...");
+            return shopUserBOResult;
+        }
+        if (shopUserBOResult.getShopUserList().size() > 0) {
+            log.warn("sorry, you already have shop ...");
+            shopUserBOResult.setMessage("you already have shop");
+            shopUserBOResult.setStatus(ResultConstant.CODE.ERROR);
+            return shopUserBOResult;
+        }
         return this.shopUserManager.insertShop(shopUserBORequest);
     }
 

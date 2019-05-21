@@ -11,7 +11,7 @@ import com.merchant.group.Login;
 import com.merchant.group.Registered;
 import com.merchant.user.service.LoginService;
 import com.merchant.user.util.JwtTokenConstant;
-import com.merchant.user.util.ResultCodeUtil;
+import com.merchant.util.ResultCodeUtil;
 import com.merchant.vo.user.request.PhoneVORequest;
 import com.merchant.vo.user.request.UserVORequest;
 import com.merchant.vo.user.result.UserVOResult;
@@ -103,7 +103,7 @@ public class LoginController extends BaseController {
      */
     @ApiOperation(value = "login", notes = "店家登录接口")
     @RequestMapping("/login")
-    public UserVOResult login(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) @Validated({Login.class}) UserVORequest userVORequest) {
+    public UserVOResult login(HttpServletRequest request, HttpServletResponse response, @RequestBody @Validated({Login.class}) UserVORequest userVORequest) {
         UserVOResult userVOResult = new UserVOResult();
         log.info("login start in LoginController ...");
         /**

@@ -16,7 +16,7 @@ import com.merchant.shop.bo.shopuser.request.TotalCommodityBORequest;
 import com.merchant.shop.bo.shopuser.result.TotalCommodityBOResult;
 import com.merchant.shop.service.ShopCommodityService;
 import com.merchant.shop.service.TotalCommodityService;
-import com.merchant.user.util.ResultCodeUtil;
+import com.merchant.util.ResultCodeUtil;
 import com.merchant.vo.shop.param.ShopCommodityParam;
 import com.merchant.vo.shop.request.ShopCommodityVORequest;
 import com.merchant.vo.shop.result.CommodityVOResult;

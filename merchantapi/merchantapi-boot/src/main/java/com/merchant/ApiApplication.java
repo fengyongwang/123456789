@@ -25,7 +25,6 @@ public class ApiApplication {
         try {
             Properties properties = new Properties();
             properties.load(ApiApplication.class.getResourceAsStream("/system.properties"));
-            properties.load(ApiApplication.class.getResourceAsStream("/sentry.properties"));
 
             SpringApplication app = new SpringApplication(ApiApplication.class);
             app.setDefaultProperties(properties);

@@ -25,4 +25,13 @@ public interface UserDao {
      * @return
      */
    UserResult insertUser(User user);
+
+
+    /**
+     * 查询手机号或者用户名是否已经存在
+     * @param request
+     * @return
+     */
+   UserResult queryUserByNameOrPhone(UserRequest request);
+
 }

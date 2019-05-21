@@ -15,7 +15,7 @@ import com.merchant.shop.bo.shopuser.result.ShopUserBOResult;
 import com.merchant.shop.bo.shopuser.result.TotalCommodityBOResult;
 import com.merchant.shop.service.ShopUserService;
 import com.merchant.shop.service.TotalCommodityService;
-import com.merchant.user.util.ResultCodeUtil;
+import com.merchant.util.ResultCodeUtil;
 import com.merchant.vo.shop.param.ShopUserParam;
 import com.merchant.vo.shop.request.ShopUserVORequest;
 import com.merchant.vo.shop.result.ShopUserVOResult;
@@ -95,16 +95,16 @@ public class ShopUserController extends BaseController {
 
     @ApiOperation(value = "query-shop", notes = "查询我的商铺")
     @RequestMapping("/query-shop")
-    public ShopUserVOResult queryMyShopByRequest(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) ShopUserVORequest shopUserVORequest) {
+    public ShopUserVOResult queryMyShopByRequest(HttpServletRequest request, HttpServletResponse response) {
         ShopUserVOResult shopUserVOResult = new ShopUserVOResult();
-        Integer userId = this.getUserId(request);
-        if (userId == null) {
+        String phone = this.getPhone(request);
+        if (phone == null) {
             log.error("sorry ,you do not login in queryShop ...");
             return shopUserVOResult;
         }
 
-        ShopUserBORequest shopUserBORequest = convertManager.tran(shopUserVORequest, ShopUserBORequest.class);
-        shopUserBORequest.setUserId(userId);
+        ShopUserBORequest shopUserBORequest = new ShopUserBORequest();
+        shopUserBORequest.setShopPhone(phone);
         ShopUserBOResult shopUserBOResult = shopUserService.queryShopUserByRequest(shopUserBORequest);
         if (shopUserBOResult.isSuccess()) {
             shopUserVOResult = convertManager.tran(shopUserBOResult, ShopUserVOResult.class);

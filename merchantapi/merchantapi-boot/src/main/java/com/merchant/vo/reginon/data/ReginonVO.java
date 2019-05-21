@@ -18,7 +18,7 @@ public class ReginonVO {
      * 地区名字
      */
     @ApiModelProperty(value = "地区名字")
-    private String areaName;
+    private String regionName;
 
 
     /**

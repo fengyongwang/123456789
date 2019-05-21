@@ -1,14 +1,14 @@
 package com.merchant.shop.manage.reginon.impl;
 
 import com.merchant.convert.ConvertManager;
-import com.merchant.user.dao.RegionDao;
-import com.merchant.user.po.request.ReginonRequest;
-import com.merchant.user.po.result.ReginonResult;
+import com.merchant.shop.dao.RegionDao;
+import com.merchant.shop.po.request.ReginonRequest;
+import com.merchant.shop.po.result.ReginonResult;
 import com.merchant.shop.bo.reginon.data.ReginonBO;
 import com.merchant.shop.bo.reginon.request.ReginonBORequest;
 import com.merchant.shop.bo.reginon.result.ReginonBOResult;
 import com.merchant.shop.manage.reginon.ReginonManage;
-import com.merchant.shop.util.ResultShopServiceCodeUtil;
+import com.merchant.user.util.ResultShopServiceCodeUtil;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Component;
 

@@ -22,7 +22,6 @@ public class ShopApplication {
         try {
             Properties properties = new Properties();
             properties.load(ShopApplication.class.getResourceAsStream("/system.properties"));
-            properties.load(ShopApplication.class.getResourceAsStream("/sentry.properties"));
 
             SpringApplication app = new SpringApplication(ShopApplication.class);
             app.setDefaultProperties(properties);

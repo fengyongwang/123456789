@@ -2,17 +2,17 @@ package com.merchant.shop.manage.shopuser.impl;
 
 import com.merchant.user.bo.CommonBOResult;
 import com.merchant.convert.ConvertManager;
-import com.merchant.user.dao.ShopUserDao;
+import com.merchant.shop.dao.ShopUserDao;
 import com.merchant.data.StatusEnum;
-import com.merchant.user.po.data.ShopUser;
-import com.merchant.user.po.request.ShopUserRequest;
-import com.merchant.user.po.result.ShopUserResult;
+import com.merchant.shop.po.data.ShopUser;
+import com.merchant.shop.po.request.ShopUserRequest;
+import com.merchant.shop.po.result.ShopUserResult;
 import com.merchant.shop.bo.shopuser.data.ShopUserBO;
 import com.merchant.shop.bo.shopuser.request.ShopUserBORequest;
 import com.merchant.shop.bo.shopuser.result.ShopUserBOResult;
 import com.merchant.shop.constant.ShopUserConfig;
 import com.merchant.shop.manage.shopuser.ShopUserManager;
-import com.merchant.shop.util.ResultShopServiceCodeUtil;
+import com.merchant.user.util.ResultShopServiceCodeUtil;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Component;
 

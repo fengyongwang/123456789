@@ -1,7 +1,7 @@
 package com.merchant.user.util;
 
 
-import com.merchant.user.po.data.Reginon;
+import com.merchant.shop.po.data.Reginon;
 import lombok.extern.log4j.Log4j;
 import org.xml.sax.*;
 

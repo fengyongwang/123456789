@@ -31,6 +31,10 @@ public class ShopUserBORequest extends CommonBORequest {
     private String shopName;
 
     /**
+     * 主营商品分类id
+     */
+    private Integer totalCommodityId;
+    /**
      * 商铺编码
      */
     private String shopCode;

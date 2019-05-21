@@ -30,7 +30,7 @@ public abstract class BaseController {
      * @return
      */
     protected  Integer getUserId(HttpServletRequest request){
-      return (Integer)request.getAttribute(JwtTokenConstant.TOKEN_COOKIE);
+      return (Integer)request.getAttribute(JwtTokenConstant.TOKEN_ID_KEY);
 
     }
 
@@ -40,7 +40,7 @@ public abstract class BaseController {
      * @return
      */
     protected String getPhone(HttpServletRequest request){
-        return (String)request.getAttribute(JwtTokenConstant.TOKEN_COOKIE);
+        return (String)request.getAttribute(JwtTokenConstant.TOKEN_PHONE_KEY);
     }
 
 }

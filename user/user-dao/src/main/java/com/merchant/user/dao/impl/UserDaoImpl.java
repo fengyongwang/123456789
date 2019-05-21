@@ -1,8 +1,10 @@
 package com.merchant.user.dao.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.merchant.data.StatusEnum;
 import com.merchant.user.mapper.UserMapper;
 import com.merchant.user.po.request.UserRequest;
 import com.merchant.user.po.result.UserResult;
@@ -10,6 +12,7 @@ import com.merchant.user.dao.UserDao;
 import com.merchant.user.po.data.User;
 import com.merchant.user.util.ResultUserUtil;
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -42,10 +45,10 @@ public class UserDaoImpl implements UserDao {
             if (request.getType() != null) {
                 wp.eq(User::getType, request.getType());
             }
-            if (request.getUserName()!=null) {
+            if (request.getUserName() != null) {
                 wp.eq(User::getUserName, request.getUserName());
             }
-            if(request.getPassWord()!=null){
+            if (request.getPassWord() != null) {
                 wp.eq(User::getPassWord, request.getPassWord());
             }
             if (request.isPaging()) {
@@ -73,6 +76,41 @@ public class UserDaoImpl implements UserDao {
             ResultUserUtil.dealUpsert(status, user, res);
         } catch (Exception e) {
             log.error("User dao insert error..........", e);
+        }
+        return res;
+    }
+
+    @Override
+    public UserResult queryUserByNameOrPhone(UserRequest request) {
+
+
+        UserResult res = new UserResult();
+        try {
+
+            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+
+            queryWrapper.lambda()
+                    .eq(User::getStatus, StatusEnum.EFFECTIVE.getValue());
+            if (StringUtils.isNotBlank(request.getUserName())) {
+                queryWrapper.lambda()
+                        .or()
+                        .eq(User::getUserName, request.getUserName());
+
+            }
+            if (StringUtils.isNotBlank(request.getPhone())) {
+                queryWrapper.lambda()
+                        .or()
+                        .eq(User::getPhone, request.getPhone());
+            }
+
+            List<User> list = mapper.selectList(queryWrapper);
+
+
+            ResultUserUtil.resultValues(res, list);
+
+            ResultUserUtil.resultSuccess(res);
+        } catch (Exception e) {
+            log.error("UserDao simpleQueryByRequest error..........", e);
         }
         return res;
     }

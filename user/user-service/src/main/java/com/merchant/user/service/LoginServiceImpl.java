@@ -3,7 +3,7 @@ package com.merchant.user.service;
 import com.merchant.user.bo.CommonBOResult;
 import com.merchant.user.bo.user.request.UserBORequest;
 import com.merchant.user.bo.user.result.UserBOResult;
-import com.merchant.user.service.LoginService;
+import com.merchant.user.manage.CheckLegalityManager;
 import com.merchant.user.manage.CodeManage;
 import com.merchant.user.manage.LoginManage;
 import com.merchant.user.util.ResultUserServiceCodeUtil;
@@ -34,6 +34,9 @@ public class LoginServiceImpl implements LoginService {
     @Resource
     private LoginManage loginManage;
 
+    @Resource
+    private CheckLegalityManager checkLegalityManager;
+
     @Override
     public CommonBOResult getSmsCode(UserBORequest userBORequest) {
         return this.codeManage.getSmsCode(userBORequest);
@@ -51,6 +54,12 @@ public class LoginServiceImpl implements LoginService {
         if (commonBOResult.isFailed()) {
             log.warn("code is error in loginService ...");
             result.setMessage("code is error");
+            return result;
+        }
+
+        CommonBOResult nameOrPhoneResult=this.checkLegalityManager.checkNameOrPhone(userBORequest.getUserName(),userBORequest.getPhone());
+        if(nameOrPhoneResult.isFailed()){
+            log.error("check userName or phone error ...");
             return result;
         }
         return this.loginManage.registeredUser(userBORequest);

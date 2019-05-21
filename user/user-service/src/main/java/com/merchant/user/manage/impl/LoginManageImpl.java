@@ -102,7 +102,7 @@ public class LoginManageImpl implements LoginManage {
             log.warn("query password error or password is null in searchPassword ...");
             return commonBOResult;
         }
-        if (this.sendPasswordToPhone(userBORequest.getPhone(), userResult.getValue().getPassWord())) {
+        if (!this.sendPasswordToPhone(userBORequest.getPhone(), userResult.getValue().getPassWord())) {
             log.warn("send password error in searchPassword ...");
             return commonBOResult;
         }

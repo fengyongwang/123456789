@@ -1,7 +1,6 @@
-package com.merchant.shop.util;
+package com.merchant.user.util;
 
 import com.merchant.user.bo.CommonBOResult;
-import com.merchant.user.util.ResultConstant;
 
 /**
  * Description:
