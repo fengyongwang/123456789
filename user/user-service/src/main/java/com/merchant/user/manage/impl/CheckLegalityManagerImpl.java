@@ -38,6 +38,7 @@ public class CheckLegalityManagerImpl implements CheckLegalityManager {
 
         if(userResult.getCount()>0){
             log.warn("sorry, this name or phone is Registered ...");
+            commonBOResult.setMessage("this name or phone is Registered");
             return commonBOResult;
         }
 

@@ -67,6 +67,10 @@ public class ShopUserDaoImpl implements ShopUserDao {
             if (request.getTotalCommodityId() != null) {
                 wp.eq(ShopUser::getTotalCommodityId, request.getTotalCommodityId());
             }
+            if(request.getShopPhone()!=null){
+                wp.eq(ShopUser::getShopPhone,request.getShopPhone());
+            }
+
             /**
              * 按照创建时间升序排序
              */

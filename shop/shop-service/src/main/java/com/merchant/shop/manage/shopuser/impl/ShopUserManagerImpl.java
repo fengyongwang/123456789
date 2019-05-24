@@ -78,7 +78,9 @@ public class ShopUserManagerImpl implements ShopUserManager {
     @Override
     public CommonBOResult updateShopByRequest(ShopUserBORequest shopUserBORequest) {
         CommonBOResult commonBOResult = new CommonBOResult();
-        ShopUserResult shopUserResult = shopUserDao.updateShopUserById(convertManager.tran(shopUserBORequest, ShopUser.class));
+        ShopUser shopUser=convertManager.tran(shopUserBORequest, ShopUser.class);
+        shopUser.setId(shopUserBORequest.getShopId());
+        ShopUserResult shopUserResult = shopUserDao.updateShopUserById(shopUser);
         if (!shopUserResult.isSuccess()) {
             log.error("update shop by request in ShopUserManagerImpl error ...");
             return commonBOResult;

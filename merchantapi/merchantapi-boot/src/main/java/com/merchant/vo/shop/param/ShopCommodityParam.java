@@ -48,26 +48,26 @@ public class ShopCommodityParam  {
      * 单价
      */
     @ApiModelProperty(value = "单价 必填")
-    @NotBlank(groups = {Create.class,Update.class})
+    @NotNull(groups = {Create.class,Update.class})
     private Double unitPrice;
 
     /**
      * 库存
      */
     @ApiModelProperty(value = "库存 必填")
-    @NotBlank(groups = {Create.class,Update.class})
+    @NotNull(groups = {Create.class,Update.class})
     private Integer stock;
 
     /**
-     * 门店图片
+     * 商品图片
      */
     @ApiModelProperty(value = "门店图片 必填")
     @NotBlank(groups = {Create.class,Update.class})
     private String imageUrl;
     /**
-     * 门店描述
+     * 商品描述
      */
-    @ApiModelProperty(value = "门店描述 必填")
+    @ApiModelProperty(value = "商品描述 必填")
     @NotBlank(groups = {Create.class,Update.class})
     private String commodityDescription;
 

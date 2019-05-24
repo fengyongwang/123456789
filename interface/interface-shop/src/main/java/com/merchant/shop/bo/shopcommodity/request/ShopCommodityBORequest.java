@@ -50,4 +50,8 @@ public class ShopCommodityBORequest extends CommonBORequest {
      */
     private Integer minTotalSaleNumber;
 
+    /**
+     * 商家id
+     */
+    private Integer userId;
 }

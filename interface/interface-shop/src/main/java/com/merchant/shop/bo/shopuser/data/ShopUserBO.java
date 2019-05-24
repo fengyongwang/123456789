@@ -43,4 +43,10 @@ public class ShopUserBO implements Serializable {
      */
     private String shopPhone;
 
+    /**
+     * 主营商铺的类别id
+     */
+    private Integer totalCommodityId;
+
+
 }

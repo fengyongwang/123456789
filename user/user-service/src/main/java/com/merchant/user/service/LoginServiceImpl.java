@@ -6,6 +6,7 @@ import com.merchant.user.bo.user.result.UserBOResult;
 import com.merchant.user.manage.CheckLegalityManager;
 import com.merchant.user.manage.CodeManage;
 import com.merchant.user.manage.LoginManage;
+import com.merchant.user.manage.MessageManagerDemo;
 import com.merchant.user.util.ResultUserServiceCodeUtil;
 import com.merchant.user.util.JwtToken;
 import com.merchant.user.util.JwtTokenConstant;
@@ -37,6 +38,10 @@ public class LoginServiceImpl implements LoginService {
     @Resource
     private CheckLegalityManager checkLegalityManager;
 
+
+    @Resource
+    private MessageManagerDemo messageManagerDemo;
+
     @Override
     public CommonBOResult getSmsCode(UserBORequest userBORequest) {
         return this.codeManage.getSmsCode(userBORequest);
@@ -46,7 +51,7 @@ public class LoginServiceImpl implements LoginService {
     public CommonBOResult registeredUser(UserBORequest userBORequest) {
         CommonBOResult result = new CommonBOResult();
 
-        if(!this.checkPassword(userBORequest.getPassWord(),userBORequest.getRepeatPassWord())){
+        if (!this.checkPassword(userBORequest.getPassWord(), userBORequest.getRepeatPassWord())) {
             return result;
         }
 
@@ -57,10 +62,10 @@ public class LoginServiceImpl implements LoginService {
             return result;
         }
 
-        CommonBOResult nameOrPhoneResult=this.checkLegalityManager.checkNameOrPhone(userBORequest.getUserName(),userBORequest.getPhone());
-        if(nameOrPhoneResult.isFailed()){
+        CommonBOResult nameOrPhoneResult = this.checkLegalityManager.checkNameOrPhone(userBORequest.getUserName(), userBORequest.getPhone());
+        if (nameOrPhoneResult.isFailed()) {
             log.error("check userName or phone error ...");
-            return result;
+            return nameOrPhoneResult;
         }
         return this.loginManage.registeredUser(userBORequest);
     }
@@ -84,10 +89,19 @@ public class LoginServiceImpl implements LoginService {
 
         CommonBOResult result = codeManage.checkSmsCode(userBORequest);
         if (result.isFailed()) {
-        log.error("code is error in retrievePassword ...");
-        return result;
+            log.error("code is error in retrievePassword ...");
+            return result;
         }
         return this.loginManage.searchPassword(userBORequest);
+    }
+
+    @Override
+    public CommonBOResult sendJsonToKafka(UserBORequest userBORequest) {
+        CommonBOResult commonBOResult = new CommonBOResult();
+
+        messageManagerDemo.sendMessage(messageManagerDemo.dealBeanToJson(userBORequest));
+        ResultUserServiceCodeUtil.resultSuccess(commonBOResult);
+        return commonBOResult;
     }
 
     /**
@@ -105,12 +119,13 @@ public class LoginServiceImpl implements LoginService {
 
     /**
      * 校验密码与重复密码是否一致
+     *
      * @param passWord
      * @param repeatPassWord
      * @return
      */
-    private Boolean checkPassword(String passWord,String repeatPassWord){
-        if(StringUtils.isBlank(passWord)||StringUtils.isBlank(repeatPassWord)){
+    private Boolean checkPassword(String passWord, String repeatPassWord) {
+        if (StringUtils.isBlank(passWord) || StringUtils.isBlank(repeatPassWord)) {
             log.warn("password or repeatPassWord is null or empty ...");
             return false;
         }

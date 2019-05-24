@@ -1,5 +1,8 @@
 package com.merchant.shop.manage.shopcommodity.impl;
 
+import com.merchant.shop.bo.shopuser.request.ShopUserBORequest;
+import com.merchant.shop.bo.shopuser.result.ShopUserBOResult;
+import com.merchant.shop.manage.shopuser.ShopUserManager;
 import com.merchant.user.bo.CommonBOResult;
 import com.merchant.convert.ConvertManager;
 import com.merchant.shop.dao.ShopCommodityDao;
@@ -30,6 +33,10 @@ public class ShopCommodityManagerImpl implements ShopCommodityManager {
 
     @Resource
     private ShopCommodityDao shopCommodityDao;
+
+
+    @Resource
+    private ShopUserManager shopUserManager;
 
     @Resource
     private ConvertManager convertManager;
@@ -68,16 +75,55 @@ public class ShopCommodityManagerImpl implements ShopCommodityManager {
 
     @Override
     public ShopCommodityBOResult queryShopCommodityByRequest(ShopCommodityBORequest shopCommodityBORequest) {
-        ShopCommodityBOResult shopCommodityBOResult=new ShopCommodityBOResult();
+        ShopCommodityBOResult shopCommodityBOResult = new ShopCommodityBOResult();
+        Integer shopId = this.queryShopIdByUserId(shopCommodityBORequest.getUserId());
+        if (shopId == 0) {
+            return shopCommodityBOResult;
+        }
 
         ShopCommodityRequest shopCommodityRequest = convertManager.tran(shopCommodityBORequest, ShopCommodityRequest.class);
-        ShopCommodityResult shopCommodityResult= shopCommodityDao.queryShopCommodityByRequest(shopCommodityRequest);
-        if(!shopCommodityResult.isSuccess()){
+        shopCommodityRequest.setShopId(shopId);
+        ShopCommodityResult shopCommodityResult = shopCommodityDao.queryShopCommodityByRequest(shopCommodityRequest);
+        if (!shopCommodityResult.isSuccess()) {
             log.error("query shopCommodity by request error in shopCommodityManager ...");
             return shopCommodityBOResult;
         }
-        shopCommodityBOResult.setShopCommodityList(convertManager.convertList(shopCommodityResult.getValues(),ShopCommodityBO.class));
+        shopCommodityBOResult.setShopCommodityList(convertManager.convertList(shopCommodityResult.getValues(), ShopCommodityBO.class));
         ResultShopServiceCodeUtil.resultSuccess(shopCommodityBOResult);
         return shopCommodityBOResult;
     }
+
+    /**
+     * 根据userId查询商铺id
+     *
+     * @param userId
+     * @return
+     */
+    private Integer queryShopIdByUserId(Integer userId) {
+        ShopUserBORequest shopUserBORequest = new ShopUserBORequest();
+        if (userId == null) {
+            return 0;
+        }
+        shopUserBORequest.setUserId(userId);
+        ShopUserBOResult shopUserBOResult = shopUserManager.queryShopUserByRequest(shopUserBORequest);
+        if (shopUserBOResult.isFailed()) {
+            log.error("query shopId by userId error in queryShopIdByUserId ...");
+            return 0;
+        }
+        if (shopUserBOResult.getShopUserList().size() == 0) {
+            log.warn("sorry,you do not have any shop ...");
+            return 0;
+        }
+        if (shopUserBOResult.getShopUserList().size() > 1) {
+            log.warn("sorry,one user only have one shop ...");
+            return 0;
+        }
+        Integer shopId = shopUserBOResult.getShopUserList().get(0).getId();
+        if (shopId == null) {
+            log.error("you shop do not have id ...");
+            return 0;
+        }
+        return shopId;
+    }
+
 }

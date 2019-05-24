@@ -49,5 +49,9 @@ public class ShopUserVO {
     @ApiModelProperty(value = "商铺电话")
     private String shopPhone;
 
-
+    /**
+     * 主营商铺的类别id
+     */
+    @ApiModelProperty(value = "主营商铺的类别id")
+    private Integer totalCommodityId;
 }

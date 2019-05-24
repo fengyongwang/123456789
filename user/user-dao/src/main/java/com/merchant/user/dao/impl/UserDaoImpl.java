@@ -89,8 +89,6 @@ public class UserDaoImpl implements UserDao {
 
             QueryWrapper<User> queryWrapper = new QueryWrapper<>();
 
-            queryWrapper.lambda()
-                    .eq(User::getStatus, StatusEnum.EFFECTIVE.getValue());
             if (StringUtils.isNotBlank(request.getUserName())) {
                 queryWrapper.lambda()
                         .or()

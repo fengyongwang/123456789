@@ -27,17 +27,17 @@ import javax.servlet.http.HttpServletResponse;
 @Api(tags = "v1.0.0商铺订单相关操作")
 public class OrderController extends BaseController {
 
-    @ApiOperation(value = "query-order",notes = "商家查询该商铺得订单查询订单")
+    @ApiOperation(value = "query-order", notes = "商家查询该商铺得订单查询订单")
     @RequestMapping("query-order")
     public OrderVOResult queryOrderByShopId(HttpServletRequest request, HttpServletResponse response, @RequestBody OrderVORequest orderRequest) {
         OrderVOResult result = new OrderVOResult();
         return result;
     }
 
-@ApiOperation(value = "update-order-status",notes = "修改订单状态")
-@RequestMapping("update-order-status")
-    public CommonResultVO updateOrderStatusByShopId(HttpServletRequest request,HttpServletResponse response,@RequestBody OrderVORequest orderRequest){
-        CommonResultVO commonResultVO=new CommonResultVO();
+    @ApiOperation(value = "update-order-status", notes = "修改订单状态")
+    @RequestMapping("update-order-status")
+    public CommonResultVO updateOrderStatusByShopId(HttpServletRequest request, HttpServletResponse response, @RequestBody OrderVORequest orderRequest) {
+        CommonResultVO commonResultVO = new CommonResultVO();
         return commonResultVO;
     }
 

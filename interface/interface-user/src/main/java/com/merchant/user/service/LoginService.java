@@ -41,4 +41,11 @@ public interface LoginService {
      */
     CommonBOResult retrievePassword(UserBORequest userBORequest);
 
+    /**
+     * 发送数据到kafka  demo
+     * @param userBORequest
+     * @return
+     */
+    CommonBOResult sendJsonToKafka(UserBORequest userBORequest);
+
 }

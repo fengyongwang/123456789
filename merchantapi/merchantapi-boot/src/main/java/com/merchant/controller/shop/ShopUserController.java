@@ -52,26 +52,6 @@ public class ShopUserController extends BaseController {
     private ShopUserService shopUserService;
 
 
-    @Reference
-    private TotalCommodityService totalCommodityService;
-
-    @ApiOperation(value = "to-create-shop", notes = "去开店")
-    @RequestMapping("/to-create-shop")
-    public TotalCommodityVOResult toCreateShop(HttpServletRequest request, HttpServletResponse response) {
-        TotalCommodityVOResult totalCommodityVOResult = new TotalCommodityVOResult();
-        log.info("query all commodity type start in toCreateShop ...");
-        TotalCommodityBORequest totalCommodityBORequest = new TotalCommodityBORequest();
-        TotalCommodityBOResult totalCommodityBOResult = totalCommodityService.queryTotalCommodity(totalCommodityBORequest);
-        if (totalCommodityBOResult.isFailed()) {
-            log.error("query all commodity type error in toCreateShop ...");
-            return totalCommodityVOResult;
-        }
-        totalCommodityVOResult = convertManager.tran(totalCommodityBOResult, TotalCommodityVOResult.class);
-        ResultCodeUtil.resultSuccess(totalCommodityVOResult);
-        return totalCommodityVOResult;
-    }
-
-
     @ApiOperation(value = "create-shop", notes = "开店")
     @RequestMapping("/create-shop")
     public ShopUserVOResult createShop(HttpServletRequest request, HttpServletResponse response, @RequestBody @Validated({Create.class}) ShopUserParam shopUserVORequest) {
@@ -85,15 +65,16 @@ public class ShopUserController extends BaseController {
         ShopUserBORequest shopUserBORequest = convertManager.tran(shopUserVORequest, ShopUserBORequest.class);
         shopUserBORequest.setUserId(userId);
         ShopUserBOResult shopUserBOResult = shopUserService.insertShop(shopUserBORequest);
+        shopUserVOResult = convertManager.tran(shopUserBOResult, ShopUserVOResult.class);
         if (shopUserBOResult.isSuccess()) {
-            shopUserVOResult = convertManager.tran(shopUserBOResult, ShopUserVOResult.class);
+
             ResultCodeUtil.resultSuccess(shopUserVOResult);
             log.info("Congratulations! create shop success ...");
         }
         return shopUserVOResult;
     }
 
-    @ApiOperation(value = "query-shop", notes = "查询我的商铺")
+    @ApiOperation(value = "query-shop", notes = "查询我的商铺的基本信息")
     @RequestMapping("/query-shop")
     public ShopUserVOResult queryMyShopByRequest(HttpServletRequest request, HttpServletResponse response) {
         ShopUserVOResult shopUserVOResult = new ShopUserVOResult();

@@ -139,12 +139,20 @@ public class ShopCommodityController extends BaseController {
      * @param shopCommodityVORequest
      * @return
      */
-    @ApiOperation(value = "query-commodity", notes = "查询商品的信息")
+    @ApiOperation(value = "query-commodity", notes = "查询我的商铺的商品信息")
     @RequestMapping("query-commodity")
-    public ShopCommodityVOResult queryCommodityByRequest(HttpServletRequest request, HttpServletResponse response, @RequestBody ShopCommodityVORequest shopCommodityVORequest) {
+    public ShopCommodityVOResult queryCommodityByRequest(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) ShopCommodityVORequest shopCommodityVORequest) {
         ShopCommodityVOResult shopCommodityVOResult = new ShopCommodityVOResult();
 
-        ShopCommodityBOResult shopCommodityBOResult = shopCommodityService.queryShopCommodityByRequest(convertManager.tran(shopCommodityVORequest, ShopCommodityBORequest.class));
+        Integer userId=super.getUserId(request);
+        if(userId==null){
+            log.error("no login ...");
+            return shopCommodityVOResult;
+        }
+
+        ShopCommodityBORequest shopCommodityBORequest=convertManager.tran(shopCommodityVORequest, ShopCommodityBORequest.class);
+        shopCommodityBORequest.setUserId(userId);
+        ShopCommodityBOResult shopCommodityBOResult = shopCommodityService.queryShopCommodityByRequest(shopCommodityBORequest);
         if (shopCommodityBOResult.isFailed()) {
             log.error("query commodity of shop error in controller ...");
             return shopCommodityVOResult;

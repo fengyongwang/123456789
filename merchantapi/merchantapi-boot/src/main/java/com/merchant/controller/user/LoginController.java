@@ -88,7 +88,7 @@ public class LoginController extends BaseController {
         CommonBOResult commonBOResult = loginService.registeredUser(convertManager.tran(userVORequest, UserBORequest.class));
         if (commonBOResult.isFailed()) {
             log.error("registered user error in LoginController...");
-            return commonResultVO;
+            return convertManager.tran(commonBOResult,CommonResultVO.class);
         }
         ResultCodeUtil.resultSuccess(commonResultVO);
         return commonResultVO;
@@ -154,6 +154,15 @@ public class LoginController extends BaseController {
         return commonResultVO;
     }
 
+
+
+    @RequestMapping("/kafka-send-test")
+    public CommonResultVO kafkaSendTest(HttpServletRequest request,HttpServletResponse response,@RequestBody UserVORequest userVORequest){
+        CommonResultVO commonResultVO=new CommonResultVO();
+        CommonBOResult commonBOResult= loginService.sendJsonToKafka(convertManager.tran(userVORequest,UserBORequest.class));
+
+        return  commonResultVO;
+    }
 
 
 
