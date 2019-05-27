@@ -131,6 +131,12 @@
             <version>${interface.shop.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>interface-commodity</artifactId>
+            <version>${interface.commodity.version}</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -138,6 +144,7 @@
         <ali.oss.version>2.8.3</ali.oss.version>
         <interface.user.version>1.0-SNAPSHOT</interface.user.version>
         <interface.shop.version>1.0-SNAPSHOT</interface.shop.version>
+        <interface.commodity.version>1.0-SNAPSHOT</interface.commodity.version>
     </properties>
 
 </project>

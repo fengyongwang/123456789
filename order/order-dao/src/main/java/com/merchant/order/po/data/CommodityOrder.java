@@ -4,7 +4,8 @@ import com.merchant.data.order.BaseOrder;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+import java.util.List;
+
 
 /**
  * Description:
@@ -17,26 +18,13 @@ import java.util.Date;
 public class CommodityOrder extends BaseOrder {
 
     /**
-     * 订单号
+     * 订单明细
      */
-    private String orderUniqueId;
-    /**
-     * 订单流水号
-     */
-    private String orderCode;
+    private List<CommodityOrderDetail> commodityOrderDetailList;
 
     /**
-     * 下单时间
+     * 优惠明细
      */
-    private Date createOrderTime;
-
-    /**
-     * 订单状态
-     * {@link com.merchant.order.constant.order.OrderConstant}
-     */
-    private String orderStatus;
-
-
-
+    private List<OrderOfferDetail>orderOfferDetails;
 
 }
