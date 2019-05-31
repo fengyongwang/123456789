@@ -38,6 +38,8 @@
 		<module>../interface-common</module>
 		<module>../interface-shop</module>
 		<module>../interface-user</module>
+		<module>../interface-order</module>
+		<module>../interface-commodity</module>
 	</modules>
 
 </project>

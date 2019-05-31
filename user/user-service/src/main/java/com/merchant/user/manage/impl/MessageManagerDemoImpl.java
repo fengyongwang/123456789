@@ -1,7 +1,8 @@
 package com.merchant.user.manage.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.merchant.data.KafkaMessageConstant;
+import com.merchant.task.constant.TaskKafkaConstant;
+import com.merchant.task.message.MessageTask;
 import com.merchant.user.bo.user.request.UserBORequest;
 import com.merchant.user.manage.MessageManagerDemo;
 import lombok.extern.log4j.Log4j;
@@ -29,7 +30,7 @@ public class MessageManagerDemoImpl implements MessageManagerDemo {
 
     @Override
     public void sendMessage(String message) {
-        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(KafkaMessageConstant.DEMO_KAFKA_TEST, message);
+        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(TaskKafkaConstant.Topic.TASK_TOPIC, message);
         future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
             @Override
             public void onFailure(Throwable ex) {
@@ -46,6 +47,8 @@ public class MessageManagerDemoImpl implements MessageManagerDemo {
     @Override
     public String dealBeanToJson(UserBORequest userBORequest) {
 
+        MessageTask messageTask=new MessageTask();
+        messageTask.setType(TaskKafkaConstant.Type.USER_INSERT);
 
         return JSONObject.toJSONString(userBORequest);
 

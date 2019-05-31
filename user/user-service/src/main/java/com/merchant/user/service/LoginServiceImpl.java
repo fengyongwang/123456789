@@ -38,7 +38,6 @@ public class LoginServiceImpl implements LoginService {
     @Resource
     private CheckLegalityManager checkLegalityManager;
 
-
     @Resource
     private MessageManagerDemo messageManagerDemo;
 

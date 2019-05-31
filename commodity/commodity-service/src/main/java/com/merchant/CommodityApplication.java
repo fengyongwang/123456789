@@ -1,5 +1,6 @@
 package com.merchant;
 
+import lombok.extern.log4j.Log4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -13,7 +14,7 @@ import java.util.Properties;
  * @author wangyf
  * @date 2019/4/16
  */
-
+@Log4j
 @SpringBootApplication
 @EnableEurekaClient
 public class CommodityApplication {
@@ -28,6 +29,7 @@ public class CommodityApplication {
             app.setDefaultProperties(properties);
             app.run(args);
             System.out.println("success");
+            log.info("commodityApplication start success ...");
         } catch (IOException e) {
             System.out.println("Fail to start CommodityApplication due to exception:" + e.toString());
         }

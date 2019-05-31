@@ -156,13 +156,12 @@ public class LoginController extends BaseController {
 
 
 
-    @RequestMapping("/kafka-send-test")
-    public CommonResultVO kafkaSendTest(HttpServletRequest request,HttpServletResponse response,@RequestBody UserVORequest userVORequest){
-        CommonResultVO commonResultVO=new CommonResultVO();
-        CommonBOResult commonBOResult= loginService.sendJsonToKafka(convertManager.tran(userVORequest,UserBORequest.class));
-
-        return  commonResultVO;
-    }
+//    @RequestMapping("/kafka-send-test")
+//    public CommonResultVO kafkaSendTest(HttpServletRequest request,HttpServletResponse response,@RequestBody UserVORequest userVORequest){
+//        CommonBOResult commonBOResult= loginService.sendJsonToKafka(convertManager.tran(userVORequest,UserBORequest.class));
+//
+//        return  convertManager.tran(commonBOResult,CommonResultVO.class);
+//    }
 
 
 

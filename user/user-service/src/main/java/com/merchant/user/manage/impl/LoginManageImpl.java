@@ -8,6 +8,7 @@ import com.merchant.user.bo.user.result.UserBOResult;
 import com.merchant.user.constant.UserEnum;
 import com.merchant.convert.ConvertManager;
 import com.merchant.user.dao.UserDao;
+import com.merchant.user.manage.MessageManagerDemo;
 import com.merchant.user.po.data.User;
 import com.merchant.user.po.request.UserRequest;
 import com.merchant.user.po.result.UserResult;
@@ -50,6 +51,10 @@ public class LoginManageImpl implements LoginManage {
     @Resource
     private ConvertManager convertManager;
 
+    @Resource
+    private MessageManagerDemo messageManagerDemo;
+
+
     @Override
     public CommonBOResult registeredUser(UserBORequest userBORequest) {
         CommonBOResult commonBOResult = new CommonBOResult();
@@ -61,6 +66,7 @@ public class LoginManageImpl implements LoginManage {
             commonBOResult.setMessage("registered User error ...");
             return commonBOResult;
         }
+        messageManagerDemo.sendMessage(messageManagerDemo.dealBeanToJson(userBORequest));
         ResultUserServiceCodeUtil.resultSuccess(commonBOResult);
 
         return commonBOResult;
