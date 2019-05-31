@@ -41,7 +41,7 @@ public class KafkaTaskListenerImpl implements KafkaTaskListener {
         log.info("receive message from kafka is : "+message.toString());
 
         /**
-         * json 数据转换为相应得javaBean
+         * json 数据转换为javaBean
          */
         MessageTask messageTask= JSON.parseObject(message,MessageTask.class);
 

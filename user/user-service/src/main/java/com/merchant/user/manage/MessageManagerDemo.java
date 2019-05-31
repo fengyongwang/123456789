@@ -1,5 +1,6 @@
 package com.merchant.user.manage;
 
+import com.merchant.task.bean.User;
 import com.merchant.user.bo.user.request.UserBORequest;
 
 /**
@@ -18,9 +19,18 @@ public interface MessageManagerDemo {
 
 
     /**
-     * UserBORequest的javaBean转成json格式
+     * UserBORequest的javaBean转成Insert类型的json格式
      * @param userBORequest
      * @return
      */
-    String dealBeanToJson(UserBORequest userBORequest);
+    String dealInsertBeanToJson(UserBORequest userBORequest);
+
+
+    /**
+     * UserBORequest的javaBean转成Update 类型的json格式
+     * @param userBORequest
+     * @return
+     */
+    String dealUpdateBeanToJson(UserBORequest userBORequest);
+
 }

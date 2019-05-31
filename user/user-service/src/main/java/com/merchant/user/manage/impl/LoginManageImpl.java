@@ -66,7 +66,11 @@ public class LoginManageImpl implements LoginManage {
             commonBOResult.setMessage("registered User error ...");
             return commonBOResult;
         }
-        messageManagerDemo.sendMessage(messageManagerDemo.dealBeanToJson(userBORequest));
+
+        /**
+         * TODO userInsert 发往kafkademo
+         */
+        messageManagerDemo.sendMessage(messageManagerDemo.dealInsertBeanToJson(userBORequest));
         ResultUserServiceCodeUtil.resultSuccess(commonBOResult);
 
         return commonBOResult;
@@ -92,6 +96,11 @@ public class LoginManageImpl implements LoginManage {
 
         userBOResult = convertManager.tran(userResult.getValue(), UserBOResult.class);
 
+
+        /**
+         * TODO userUpdate 发完kafka demo
+         */
+        messageManagerDemo.sendMessage(messageManagerDemo.dealUpdateBeanToJson(userBORequest));
         ResultUserServiceCodeUtil.resultSuccess(userBOResult);
         return userBOResult;
     }

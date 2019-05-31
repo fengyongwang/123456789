@@ -1,5 +1,6 @@
 package com.merchant.shop.manage.kafka;
 
+import com.merchant.shop.bo.shopuser.request.ShopUserBORequest;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 /**
@@ -11,9 +12,23 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 public interface KafkaListenerManager {
 
     /**
-     * 接受kafka消息
-     * @param consumer
+     * 发送消息到kafka
+     * @param message
      */
-    void receive(ConsumerRecord<?, ?> consumer);
+    void sendMessage(String message);
 
+    /**
+     * shop 添加 转为json
+     * @param shopUserBORequest
+     * @return
+     */
+    String shopInsertToJson(ShopUserBORequest shopUserBORequest);
+
+
+    /**
+     * 门店修改 转为json
+     * @param shopUserBORequest
+     * @return
+     */
+    String shopUpdateToJson(ShopUserBORequest shopUserBORequest);
 }

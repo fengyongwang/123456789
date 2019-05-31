@@ -98,7 +98,7 @@ public class LoginServiceImpl implements LoginService {
     public CommonBOResult sendJsonToKafka(UserBORequest userBORequest) {
         CommonBOResult commonBOResult = new CommonBOResult();
 
-        messageManagerDemo.sendMessage(messageManagerDemo.dealBeanToJson(userBORequest));
+//        messageManagerDemo.sendMessage(messageManagerDemo.dealBeanToJson(userBORequest));
         ResultUserServiceCodeUtil.resultSuccess(commonBOResult);
         return commonBOResult;
     }

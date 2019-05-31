@@ -1,5 +1,6 @@
 package com.merchant.shop.manage.shopuser.impl;
 
+import com.merchant.shop.manage.kafka.KafkaListenerManager;
 import com.merchant.user.bo.CommonBOResult;
 import com.merchant.convert.ConvertManager;
 import com.merchant.shop.dao.ShopUserDao;
@@ -35,6 +36,11 @@ public class ShopUserManagerImpl implements ShopUserManager {
     @Resource
     private ConvertManager convertManager;
 
+
+    @Resource
+    private KafkaListenerManager kafkaListenerManager;
+
+
     @Override
     public ShopUserBOResult insertShop(ShopUserBORequest shopUserBORequest) {
         ShopUserBOResult shopUserBOResult = new ShopUserBOResult();
@@ -56,6 +62,14 @@ public class ShopUserManagerImpl implements ShopUserManager {
             return shopUserBOResult;
         }
         shopUserBOResult.setShopUserList(convertManager.convertList(shopUserResult.getValues(), ShopUserBO.class));
+
+
+        /**
+         * TODO     商铺添加  发往kafka    的demo
+         */
+        kafkaListenerManager.sendMessage(kafkaListenerManager.shopInsertToJson(shopUserBORequest));
+
+
         ResultShopServiceCodeUtil.resultSuccess(shopUserBOResult);
         return shopUserBOResult;
     }
@@ -90,6 +104,14 @@ public class ShopUserManagerImpl implements ShopUserManager {
             log.warn("sorry, do not query this shop ...");
             return commonBOResult;
         }
+
+        /**
+         * TODO     商铺修改 发往kafka  的 demo
+         */
+        kafkaListenerManager.sendMessage(kafkaListenerManager.shopUpdateToJson(shopUserBORequest));
+
+
+
         ResultShopServiceCodeUtil.resultSuccess(commonBOResult);
 
         return commonBOResult;

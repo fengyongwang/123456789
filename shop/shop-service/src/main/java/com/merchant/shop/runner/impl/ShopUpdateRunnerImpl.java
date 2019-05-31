@@ -2,6 +2,7 @@ package com.merchant.shop.runner.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.merchant.shop.runner.TaskRunner;
+import com.merchant.task.constant.TaskKafkaConstant;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Component;
 
@@ -11,22 +12,25 @@ import java.util.List;
  * Description:
  *
  * @author wangyf
- * @date 2019/5/30
+ * @date 2019/5/31
  */
-@Component("taskRunnerImpl")
 @Log4j
-public class TaskRunnerImpl implements TaskRunner {
+@Component("shopUpdateRunnerImpl")
+public class ShopUpdateRunnerImpl implements TaskRunner {
 
-    String type="default";
+    String type= TaskKafkaConstant.Type.SHOP_UPDATE;
 
-    Class itemClass=Object.class;
+    Class itemClass= TaskKafkaConstant.ClassMap.UPDATE_SHOP;
+
 
     @Override
     public void exec(List<Object> obj) {
 
         /**
-         * 每个任务执行 得逻辑
+         * 商铺update 过来的逻辑
          */
+
+        log.info("商铺update 过来的逻辑");
 
     }
 
