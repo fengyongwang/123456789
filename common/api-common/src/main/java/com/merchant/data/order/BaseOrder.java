@@ -26,7 +26,7 @@ public class BaseOrder implements Serializable {
     private String orderNumber;
 
     /**
-     * 下单时间
+     * 创建时间
      */
     private Date createOrderTime;
 

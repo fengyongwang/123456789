@@ -1,5 +1,6 @@
 package com.merchant.order.manage.order;
 
+import com.merchant.data.po.result.CommonResultPO;
 import com.merchant.order.bo.order.request.OrderBORequest;
 import com.merchant.user.bo.CommonBOResult;
 
@@ -18,4 +19,6 @@ public interface OrderManager {
      * @return
      */
     CommonBOResult createOrder(OrderBORequest orderBORequest);
+
+
 }

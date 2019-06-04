@@ -137,6 +137,12 @@
             <version>${interface.commodity.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>interface-order</artifactId>
+            <version>${interface.order.version}</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -145,6 +151,7 @@
         <interface.user.version>1.0-SNAPSHOT</interface.user.version>
         <interface.shop.version>1.0-SNAPSHOT</interface.shop.version>
         <interface.commodity.version>1.0-SNAPSHOT</interface.commodity.version>
+        <interface.order.version>1.0-SNAPSHOT</interface.order.version>
     </properties>
 
 </project>

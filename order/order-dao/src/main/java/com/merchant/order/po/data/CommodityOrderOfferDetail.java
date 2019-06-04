@@ -12,28 +12,23 @@ import java.util.Date;
  * @date 2019/6/3
  */
 @Data
-@Document(collection = "t_yf_commodityOrderDetail")
-public class CommodityOrderDetail {
+@Document(collection = "t_yf_CommodityOrderOfferDetail")
+public class CommodityOrderOfferDetail {
+
 
     /**
      * 订单号
      */
     private String orderUniqueId;
+    /**
+     * 优惠描述
+     */
+    private String cheapDescription;
 
     /**
-     * 商品名称
+     *  优惠金额
      */
-    private String commodityName;
-
-    /**
-     * 商品单价
-     */
-    private String commodityUnitPrice;
-
-    /**
-     * 商品数量
-     */
-    private String commodityCount;
+    private String cheapMoney;
 
     /**
      * 创建时间
