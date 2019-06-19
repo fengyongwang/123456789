@@ -110,7 +110,7 @@
 
     <properties>
         <common.version>1.0-SNAPSHOT</common.version>
-        <ali.oss.version>2.8.3</ali.oss.version>
+        <ali.oss.version>2.8.5</ali.oss.version>
 
 
     </properties>
