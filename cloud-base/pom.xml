@@ -252,7 +252,7 @@
         <httpcomponent.client.version>4.3.6</httpcomponent.client.version>
         <mybatis.version>1.3.2</mybatis.version>
         <alibaba.druid.version>1.1.0</alibaba.druid.version>
-        <mysql.version>5.1.34</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <apollo.version>1.1.2</apollo.version>
         <okhttp.version>3.5.0</okhttp.version>
         <swagger.version>2.7.0</swagger.version>
