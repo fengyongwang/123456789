@@ -249,7 +249,7 @@
         <fastjson.version>1.2.49</fastjson.version>
         <spring.boot.dependencies>2.0.4.RELEASE</spring.boot.dependencies>
         <httpcomponent.version>4.3.2</httpcomponent.version>
-        <httpcomponent.client.version>4.3.6</httpcomponent.client.version>
+        <httpcomponent.client.version>4.5.13</httpcomponent.client.version>
         <mybatis.version>1.3.2</mybatis.version>
         <alibaba.druid.version>1.1.0</alibaba.druid.version>
         <mysql.version>5.1.34</mysql.version>
