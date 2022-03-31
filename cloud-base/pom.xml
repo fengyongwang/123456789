@@ -247,7 +247,7 @@
         <log4j.version>1.2.16</log4j.version>
         <dozer.version>5.5.1</dozer.version>
         <fastjson.version>1.2.49</fastjson.version>
-        <spring.boot.dependencies>2.0.4.RELEASE</spring.boot.dependencies>
+        <spring.boot.dependencies>2.5.12</spring.boot.dependencies>
         <httpcomponent.version>4.3.2</httpcomponent.version>
         <httpcomponent.client.version>4.3.6</httpcomponent.client.version>
         <mybatis.version>1.3.2</mybatis.version>
