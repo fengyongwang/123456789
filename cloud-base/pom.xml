@@ -246,7 +246,7 @@
         <beanutils.version>1.8.3</beanutils.version>
         <log4j.version>1.2.16</log4j.version>
         <dozer.version>5.5.1</dozer.version>
-        <fastjson.version>1.2.49</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <spring.boot.dependencies>2.0.4.RELEASE</spring.boot.dependencies>
         <httpcomponent.version>4.3.2</httpcomponent.version>
         <httpcomponent.client.version>4.3.6</httpcomponent.client.version>
